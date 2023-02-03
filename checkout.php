@@ -136,7 +136,7 @@
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="#">
+						        	<form action="index.html">
 						        		<p><input type="text" placeholder="Name"></p>
 						        		<p><input type="email" placeholder="Email"></p>
 						        		<p><input type="text" placeholder="Address"></p>
@@ -176,7 +176,7 @@
 						        <div class="card-details">
 						        	<!-- <p>Your card details goes here.</p> -->
 											<div class="billing-address-form">
-												<form action="#">
+												<form action="index.html">
 													<p><input type="number" placeholder="Card Number"></p>
 													<p><input type="number" placeholder="CCV"></p>
 													<p><input type="number" placeholder="MM/YYYY"></p>
