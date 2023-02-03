@@ -25,23 +25,21 @@ include ('header.php');
 			<div class="row">
 				<div class="col-lg-8 mb-5 mb-lg-0">
 					<div class="form-title">
-						<h2>Have you any question?</h2>
-						<p>Our customer support team is available 24/7 to speak with you and find answers to your enquiries. </p>
-					</div>
+						<h2>Sign In</h2>
+						</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
 						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
 							<p>
-								<input type="text" placeholder="Name" name="name" id="name">
+								
 								<input type="email" placeholder="Email" name="email" id="email">
 							</p>
 							<p>
 								<input type="tel" placeholder="Phone" name="phone" id="phone">
-								<input type="text" placeholder="Subject" name="subject" id="subject">
+								
 							</p>
-							<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p>
-							<input type="hidden" name="token" value="FsWga4&@f6aw" />
-							<p><input type="submit" value="Submit"></p>
+							
+							<p><input type="submit" value="Sign In"></p>
 						</form>
 					</div>
 				</div>
@@ -66,25 +64,7 @@ include ('header.php');
 	</div>
 	<!-- end contact form -->
 
-	<!-- find our location -->
-	<div class="find-location blue-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<p> <i class="fas fa-map-marker-alt"></i> Find Our Location</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end find our location -->
-
-	<!-- google map section -->
-	<div class="embed-responsive embed-responsive-21by9">
-		<iframe src="https://maps.google.com/maps?q=105,%20zik%20avenue%20awka&t=&z=13&ie=UTF8&iwloc=&output=embed"  width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
-	</div>
-	<!-- end google map section -->
-
-
+	
 	<!-- footer -->
 	<?php
 include ('footer.php');

@@ -63,18 +63,16 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-              
-              <li><a href="index.php?" class="<?php echo str_ends_with($url, '/index.php?') ? 'current-list-item' : '' ?>">Home</a></li>
-              <li><a href="about.php?" class="<?php echo str_ends_with($url, '/about.php') ? 'current-list-item' : '' ?>">About</a></li>
-              <li><a href="contact.php?" class="<?php echo str_ends_with($url, '/contact.php') ? 'current-list-item' : '' ?>">Contact</a></li>
-              <li><a href="shop.php?" class="<?php echo str_ends_with($url, '/shop.php') ? 'current-list-item' : '' ?>">Shop</a></li>
+              <li><a href="index.php" class="<?php echo str_ends_with($url, 'index.php') ? 'current-list-item' : '' ?>">Home</a></li>
+        			<li><a href="about.php" class="<?php echo str_ends_with($url, 'about.php') ? 'current-list-item' : '' ?>">About</a></li>
+              <li><a href="contact.php" class="<?php echo str_ends_with($url, 'contact.php') ? 'current-list-item' : '' ?>">Contact</a></li>
+              <li><a href="shop.php" class="<?php echo str_ends_with($url, 'shop.php') ? 'current-list-item' : '' ?>">Shop</a></li>
 								
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
+										<a class="shopping-cart" href="signin.php"><i class="fas fa-user"></i> Sign In</a>
+										</div>
 								</li>
 							</ul>
 						</nav>
