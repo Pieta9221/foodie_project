@@ -1,4 +1,5 @@
 <?php
+session_start();
   require 'connection.php';
 	$config = new mysqli ($host, $user, $pwd, $database);
   $error='';
@@ -10,9 +11,12 @@ if(isset($_POST['submit'])){
 	$pword3 = md5($pword);
 	$query2 = "SELECT * FROM users WHERE email = '$email' AND pword = '$pword3'";
 	$res2 = $config->query($query2);
-	if($res2->num_rows == 1){
-		$_SESSION['user'] = $username;
-    header('location:users/cart.php');
+	
+	if($res2->num_rows === 1){
+		$rows = $res2->fetch_array();
+		$_SESSION['user'] = $rows['username'];
+    header('location:cart.php');
+		exit();
   }else{
 		$error = "Invalid login details!";
 	}

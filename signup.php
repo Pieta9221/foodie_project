@@ -55,7 +55,7 @@ include ('header.php');
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>New to fodie?</p>
+						<p>New to foodie?</p>
 						<h1>Sign Up</h1>
 					</div>
 				</div>
