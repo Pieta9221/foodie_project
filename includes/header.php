@@ -54,7 +54,7 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
+							<a href="index.php">
 								<img src="assets/img/logo.png" alt="">
 							</a>
 						</div>
@@ -63,15 +63,15 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-              <li><a href="index.php" class="<?php echo str_ends_with($url, 'index.php') ? 'current-list-item' : '' ?>">Home</a></li>
-        			<li><a href="about.php" class="<?php echo str_ends_with($url, 'about.php') ? 'current-list-item' : '' ?>">About</a></li>
-              <li><a href="contact.php" class="<?php echo str_ends_with($url, 'contact.php') ? 'current-list-item' : '' ?>">Contact</a></li>
-              <li><a href="shop.php" class="<?php echo str_ends_with($url, 'shop.php') ? 'current-list-item' : '' ?>">Shop</a></li>
+              <li><a href="index.php" class="<?php echo str_ends_with($url, '/index.php') ? 'current-list-item' : '' ?>"> Home</a></li>
+        			<li><a href="about.php" class="<?php echo str_ends_with($url, '/about.php') ? 'current-list-item' : '' ?>"> <span>About</span></a></li>
+              <li><a href="contact.php" class="<?php echo str_ends_with($url, '/contact.php') ? 'current-list-item' : '' ?>"> Contact</a></li>
+              <li><a href="shop.php" class="<?php echo str_ends_with($url, '/shop.php') ? 'current-list-item' : '' ?>"> Shop</a></li>
 								
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="signin.php"><i class="fas fa-user"></i> Sign In</a>
+										<a class="<?php echo str_ends_with($url, '/signin.php') ? 'current-list-item' : '' ?>" href="signin.php"><i class="fas fa-user"></i> Sign In</a>
 										</div>
 								</li>
 							</ul>

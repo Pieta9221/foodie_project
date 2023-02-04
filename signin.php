@@ -1,5 +1,25 @@
 <?php
-include ('header.php');
+  require 'includes/connection.php';
+	$config = new mysqli ($host, $user, $pwd, $database);
+  $error='';
+if(isset($_POST['submit'])){
+
+	$email = $_POST['email'];
+	$pword = $_POST['pword'];
+	$_SESSION['email'] = $email;
+	$pword3 = md5($pword);
+	$query2 = "SELECT * FROM users WHERE email = '$email' AND pword = '$pword3'";
+	$res2 = $config->query($query2);
+	if($res->num_rows == 1){
+    header('user.php');
+  }else{
+		$error = "Invalid login details!";
+	}
+}
+?>	
+
+<?php
+include ('includes/header.php');
 ?>
 
 
@@ -10,8 +30,8 @@ include ('header.php');
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Get 24/7 Support</p>
-						<h1>Contact us</h1>
+						<p>Get Started</p>
+						<h1>Sign In</h1>
 					</div>
 				</div>
 			</div>
@@ -26,20 +46,23 @@ include ('header.php');
 				<div class="col-lg-8 mb-5 mb-lg-0">
 					<div class="form-title">
 						<h2>Sign In</h2>
+						<p class="error"><?php echo $error;  ?></p>
 						</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+						<form type="POST" >
 							<p>
-								
-								<input type="email" placeholder="Email" name="email" id="email">
+								<input type="email" placeholder="Email" name="email" id="email" required/>
 							</p>
 							<p>
-								<input type="tel" placeholder="Phone" name="phone" id="phone">
+								<input type="password" placeholder="Password" name="password" id="phone" required/>
 								
 							</p>
 							
-							<p><input type="submit" value="Sign In"></p>
+							
+							<p><input type="submit" name="submit" value="Sign In"></p>
+
+							<p>New to Foodie? <a href="signup.php" class="link"><span >Sign Up</span></a></p>
 						</form>
 					</div>
 				</div>
@@ -67,5 +90,5 @@ include ('header.php');
 	
 	<!-- footer -->
 	<?php
-include ('footer.php');
+include ('includes/footer.php');
 ?>

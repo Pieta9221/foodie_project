@@ -1,5 +1,5 @@
 <?php
-include ('header.php');
+include ('includes/header.php');
 ?>
 	<!-- search area -->
 	<div class="search-area">
@@ -173,5 +173,5 @@ include ('header.php');
 	
 		<!-- footer -->
 		<?php
-include ('footer.php');
+include ('includes/footer.php');
 ?>
