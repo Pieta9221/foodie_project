@@ -1,5 +1,5 @@
 <?php
-  require 'includes/connection.php';
+  require 'connection.php';
 	$config = new mysqli ($host, $user, $pwd, $database);
   $error='';
 	if(isset($_POST['submit'])){
@@ -44,7 +44,7 @@
  
 ?>
 <?php
-include ('includes/header.php');
+include ('header.php');
 ?>
 
 
@@ -122,5 +122,5 @@ include ('includes/header.php');
 	
 	<!-- footer -->
 	<?php
-include ('includes/footer.php');
+include ('footer.php');
 ?>

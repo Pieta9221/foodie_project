@@ -1,17 +1,18 @@
 <?php
-  require 'includes/connection.php';
+  require 'connection.php';
 	$config = new mysqli ($host, $user, $pwd, $database);
   $error='';
 if(isset($_POST['submit'])){
 
 	$email = $_POST['email'];
 	$pword = $_POST['pword'];
-	$_SESSION['email'] = $email;
+	
 	$pword3 = md5($pword);
 	$query2 = "SELECT * FROM users WHERE email = '$email' AND pword = '$pword3'";
 	$res2 = $config->query($query2);
-	if($res->num_rows == 1){
-    header('user.php');
+	if($res2->num_rows == 1){
+		$_SESSION['user'] = $username;
+    header('location:users/cart.php');
   }else{
 		$error = "Invalid login details!";
 	}
@@ -19,7 +20,7 @@ if(isset($_POST['submit'])){
 ?>	
 
 <?php
-include ('includes/header.php');
+include ('header.php');
 ?>
 
 
@@ -50,12 +51,12 @@ include ('includes/header.php');
 						</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST" >
+						<form method="POST" >
 							<p>
 								<input type="email" placeholder="Email" name="email" id="email" required/>
 							</p>
 							<p>
-								<input type="password" placeholder="Password" name="password" id="phone" required/>
+								<input type="password" placeholder="Password" name="pword" id="phone" required/>
 								
 							</p>
 							
@@ -90,5 +91,5 @@ include ('includes/header.php');
 	
 	<!-- footer -->
 	<?php
-include ('includes/footer.php');
+include ('footer.php');
 ?>
