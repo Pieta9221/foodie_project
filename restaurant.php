@@ -1,3 +1,0 @@
-<html>
-  Hi restaurant
-</html>

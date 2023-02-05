@@ -20,16 +20,10 @@ if(isset($_POST['submit'])){
   }else{
 		$query3  = "SELECT * FROM admindata WHERE email = '$email' && pword = '$pword3'";
     $res3 = $config->query($query3);
+		$_SESSION['admin'] = $email;
     if($res3->num_rows == 1){
-      $row = $res3->fetch_array();
-
-      if($row['status'] == "Admin"){
-				$_SESSION['admin'] = ($row['status'] == "Admin");
-        header('location:admin.php');
-      } else if($row['status'] == "Restaurant"){
-				$_SESSION['restaurant'] = ($row['status'] == "Restaurant");
-        header('location:restaurant.php');
-      }
+        header('location:adminprofile.php');
+    
     } else{  
       $error = "Invalid login details!";
     }

@@ -731,6 +731,10 @@ nav.main-menu ul ul.sub-menu li a {
 .error {
   color: #ff0000;
 }
+
+.success {
+  color: #00ff00;
+}
 nav.main-menu a.current-list-item,
 nav.main-menu li:hover > a {
   color: #f28123;
@@ -965,8 +969,8 @@ h2.widget-title:after {
   background-color: #012738;
   color: #f28123;
   padding: 14px 0;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   cursor: pointer;
 }
 
@@ -2311,6 +2315,18 @@ ul.social-link-team li a {
   line-height: 1.8;
 }
 
+.abc {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background: #f28123;
+  border-radius: 3px;
+  color: #051922;
+}
+.abc:hover {
+  background: #051922;
+  color: #f28123;
+}
 .add-form form p input[type="text"],
 .add-form form p input[type="text"],
 .add-form form p input[type="tel"],

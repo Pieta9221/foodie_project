@@ -8,7 +8,12 @@ header("location: signin.php");
 }
 
 ?> 
-
+<?php
+$email = $_SESSION['admin']; 
+$query3  = "SELECT * FROM admindata WHERE email = '$email'";
+$res3 = $config->query($query3);
+$row = $res3->fetch_array();
+?>
 <?php
   $url = $_SERVER['PHP_SELF'];
 ?>
@@ -74,10 +79,19 @@ header("location: signin.php");
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-              <li><a href="admin.php" class="<?php echo str_ends_with($url, '/admin.php') ? 'current-list-item' : '' ?>"> Profile</a></li>
+							<li><a href="adminprofile.php" class="<?php echo str_ends_with($url, '/adminprofile.php') ? 'current-list-item' : '' ?>"> Profile</a></li>
+              <li><a href="admin.php" class="<?php echo str_ends_with($url, '/admin.php') ? 'current-list-item' : '' ?>"> Admins</a></li>
+        			<?php
+              if($row['status']=="Admin"){?>
         			<li><a href="users.php" class="<?php echo str_ends_with($url, '/users.php') ? 'current-list-item' : '' ?>"> <span>Users</span></a></li>
-              <li><a href="orders.php" class="<?php echo str_ends_with($url, '/orders.php') ? 'current-list-item' : '' ?>"> Orders</a></li>
               <li><a href="shops.php" class="<?php echo str_ends_with($url, '/shops.php') ? 'current-list-item' : '' ?>"> Shops</a></li>
+							
+              <?php   
+              }else { ?>
+                <li><a href="menu.php" class="<?php echo str_ends_with($url, '/menu.php') ? 'current-list-item' : '' ?>"> <span>Menu</span></a></li><?php
+              }
+              ?><li><a href="orders.php" class="<?php echo str_ends_with($url, '/orders.php') ? 'current-list-item' : '' ?>"> Orders</a></li>
+              
 								
 								</li>
 								<li>
@@ -123,7 +137,7 @@ header("location: signin.php");
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
 									
-									<th class="product-name">User ID</th>
+									<th class="product-name">ID</th>
 									<th class="product-name">Username</th>
 									<th class="product-name">Email</th>
 									<th class="product-name">Phone</th>
