@@ -2311,6 +2311,16 @@ ul.social-link-team li a {
   line-height: 1.8;
 }
 
+.add-form form p input[type="text"],
+.add-form form p input[type="text"],
+.add-form form p input[type="tel"],
+.add-form form p input[type="email"],
+.add-form form p input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
 .contact-form form p input[type="text"],
 .contact-form form p input[type="tel"],
 .contact-form form p input[type="email"],

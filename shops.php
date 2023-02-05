@@ -1,11 +1,43 @@
 <?php
 session_start();
+require 'connection.php';
+$config = new mysqli ($host, $user, $pwd, $database);
 
 if(!isset($_SESSION['admin'])){
 header("location: signin.php"); 
 }
 
 ?> 
+<?php
+$error='';
+if(isset($_POST['submit'])){
+  
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $res_id = "RES".(rand(99,1000));
+    $pword = $_POST['pword'];
+    $pword2 = $_POST['pword2'];
+    $pword3 = md5($pword);
+    
+    
+    $query4 = "SELECT * FROM admindata WHERE email = '$email'";
+    $res4 = $config->query($query4);
+    if ($res4->num_rows>0){
+    $error = "Email address already in use";
+        
+    } else{
+    $insert = "INSERT INTO admindata (username, email, pword, res_id) VALUES ('$username', '$email', '$pword3',  '$res_id')";
+    if($config->query($insert)===TRUE){
+          echo "<script> alert('$username, successfully added') </script>";
+          include('shops.php');
+        } else{
+          $error = "Ooops! Problem with registration, try again";
+        }
+      }
+      }
+  
+
+?>
 
 <?php
   $url = $_SERVER['PHP_SELF'];
@@ -102,7 +134,7 @@ header("location: signin.php");
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>find restaurant information</p>
+          <p>find restaurant information</p>
 						<h1>Restaurants</h1>
 					</div>
 				</div>
@@ -120,83 +152,77 @@ header("location: signin.php");
 						<table class="cart-table">
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
-									<th class="product-remove"></th>
-									<th class="product-image">Product Image</th>
+									
+                  <th class="product-name">Restaurant ID</th>
 									<th class="product-name">Name</th>
-									<th class="product-price">Price</th>
-									<th class="product-quantity">Quantity</th>
-									<th class="product-total">Total</th>
+									<th class="product-name">Email</th>
+									<th class="product-name">Phone</th>
+									<th class="product-name">Address</th>
+									
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>
-									<td class="product-name">Spaghetti</td>
-									<td class="product-price">&#8358;1,200</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>
-									<td class="product-name">Rice & Stew</td>
-									<td class="product-price">&#8358;2,000</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>
-									<td class="product-name">Egusi Soup</td>
-									<td class="product-price">&#8358;1,500</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
+                <?php
+                $query2  = "SELECT * FROM admindata WHERE status='Restaurant' ORDER BY username ASC";
+                $result2 = $config->query($query2);
+                if($result2->num_rows == 0){
+                  echo "Data not found";
+                }else{
+                  while($row = $result2 -> fetch_array()){
+                    echo "<tr class='table-body-row'>";
+                    echo "<td class='product-name'>".$row['res_id']."</td>";
+                    echo "<td class='product-name'>".$row['username']."</td>";
+                    echo "<td class='product-name'>".$row['email']."</td>";
+                    echo "<td class='product-name'>".$row['phone']."</td>";
+                    echo "<td class='product-name'>".$row['address']."</td>";
+									
+                  echo "</tr>";
+                }
+                }
+                ?>   
+								
 							</tbody>
 						</table>
 					</div>
 				</div>
 
-				<div class="col-lg-4">
-					<div class="total-section">
-						<table class="total-table">
-							<thead class="total-table-head">
-								<tr class="table-total-row">
-									<th>Total</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="total-data">
-									<td><strong>Subtotal: </strong></td>
-									<td>&#8358;4,700</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Delivery: </strong></td>
-									<td>&#8358;300</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Total: </strong></td>
-									<td>&#8358;5,000</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Update Cart</a>
-							<a href="checkout.html" class="boxed-btn black">Check Out</a>
+
+        <div class="col-lg-4">
+          
+        
+					  <div class="form-title">
+						<h2>Add New</h2>
+						<p class="error"><?php echo $error;  ?></p>
 						</div>
-					</div>
+				 	  <div class="add-form">
+						<form method="POST" >
+              <p>
+								<input type="text" placeholder="Restaurant Name" name="username" id="email" required/>
+							</p>
+							<p>
+								<input type="email" placeholder="Email" name="email" id="email" required/>
+							</p>
+							<p>
+								<input type="password"  placeholder="Password" name="pword" id="phone" required/>
+								
+							</p>
+							
+							
+							<p><input type="submit" name="submit" value="Add"></p>
 
-					
-				</div>
+							
+						</form>
+					</div>
+				  
+				
+
+
 			</div>
 		</div>
 	</div>
 	<!-- end cart -->
 
-		<!-- footer -->
-    <?php
+			<!-- footer -->
+			<?php
 include ('copyright.php');
 ?>
-
