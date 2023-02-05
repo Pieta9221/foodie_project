@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['admin'])){
 header("location: signin.php"); 
 }
 
@@ -72,36 +72,20 @@ header("location: signin.php");
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-              <li><a href="index.php" class="<?php echo str_ends_with($url, '/index.php') ? 'current-list-item' : '' ?>"> Home</a></li>
-        			<li><a href="about.php" class="<?php echo str_ends_with($url, '/about.php') ? 'current-list-item' : '' ?>"> <span>About</span></a></li>
-              <li><a href="contact.php" class="<?php echo str_ends_with($url, '/contact.php') ? 'current-list-item' : '' ?>"> Contact</a></li>
-              <li><a href="shop.php" class="<?php echo str_ends_with($url, '/shop.php') ? 'current-list-item' : '' ?>"> Shop</a></li>
+              <li><a href="admin.php" class="<?php echo str_ends_with($url, '/admin.php') ? 'current-list-item' : '' ?>"> Profile</a></li>
+        			<li><a href="users.php" class="<?php echo str_ends_with($url, '/users.php') ? 'current-list-item' : '' ?>"> <span>Users</span></a></li>
+              <li><a href="orders.php" class="<?php echo str_ends_with($url, '/orders.php') ? 'current-list-item' : '' ?>"> Orders</a></li>
+              <li><a href="shops.php" class="<?php echo str_ends_with($url, '/shops.php') ? 'current-list-item' : '' ?>"> Shops</a></li>
 								
 								</li>
-								<?php
-if(isset($_SESSION['user'])){
-
-?>
 								<li>
 									<div class="header-icons">
-										<a class="<?php echo str_ends_with($url, '/cart.php') ? 'current-list-item' : '' ?>" href="cart.php">(<?php
-              if(isset($_SESSION["cart"])){
-              $count = count($_SESSION["cart"]); 
-              echo "$count"; 
-            }
-              else
-                echo "0";
-              ?>)<i class="fas fa-shopping-cart"></i></a>
-										<a class="<?php echo str_ends_with($url, '/wallet.php') ? 'current-list-item' : '' ?>" href="wallet.php"><i class="fas fa-wallet"></i></a>
-										<a class="<?php echo str_ends_with($url, '/order.php') ? 'current-list-item' : '' ?>" href="order.php"><i class="fas fa-shopping-bag"></i></a>
-										<a class="<?php echo str_ends_with($url, '/logout.php') ? 'current-list-item' : '' ?>" href="logout.php"><i class="fas fa-power-off"></i></a>
+										<a class="<?php echo str_ends_with($url, '/logout.php') ? 'current-list-item' : '' ?>" href="logout.php"><i class="fas fa-power-off"></i> Logout</a>
 										</div>
 								</li>
-							</ul><?php
-}?>
+							</ul>
 						</nav>
-						
-						<div class="mobile-menu"></div>
+												<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
 				</div>
@@ -212,6 +196,8 @@ if(isset($_SESSION['user'])){
 	<!-- end cart -->
 
 			<!-- footer -->
-			<?php
-include ('footer.php');
+	<!-- footer -->
+  <?php
+include ('copyright.php');
 ?>
+

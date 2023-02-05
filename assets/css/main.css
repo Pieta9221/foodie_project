@@ -833,6 +833,7 @@ a.mobile-show {
   color: #fff;
 }
 
+button[type="submit"],
 .search-bar-tablecell button[type="submit"] {
   border: none;
   background-color: #f28123;
@@ -841,6 +842,7 @@ a.mobile-show {
   display: inline-block;
   border-radius: 50px;
   font-weight: 700;
+  outline: none;
 }
 
 .search-bar-tablecell input::-webkit-input-placeholder {
@@ -859,6 +861,7 @@ a.mobile-show {
   color: #fff;
 }
 
+button[type="submit"] i,
 .search-bar-tablecell button[type="submit"] i {
   margin-left: 5px;
 }
@@ -1283,6 +1286,7 @@ a.cart-btn {
   transition: 0.3s;
 }
 
+button[type="submit"]:hover,
 a.cart-btn:hover {
   background-color: #051922;
   color: #f28123;
