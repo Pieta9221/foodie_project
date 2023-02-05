@@ -92,7 +92,7 @@ include ('header.php');
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Our</span> Menu</h3>
+						<h3><span class="orange-text">Near</span> Resturants</h3>
 						<p>Select from a list of our appetizing dishes.</p>
 					</div>
 				</div>
@@ -104,9 +104,9 @@ include ('header.php');
 						<div class="product-image">
 							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
 						</div>
-						<h3>Spaghetti</h3>
-						<p class="product-price"><span>Per Serving</span> &#8358;1,200 </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>Ofiaku</h3>
+						<p class="product-price"><span>14 ziks avenue Awka</span> Free delivery</p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Visit</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 text-center">
@@ -114,9 +114,9 @@ include ('header.php');
 						<div class="product-image">
 							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
 						</div>
-						<h3>Rice & Stew</h3>
-						<p class="product-price"><span>Per Serving</span> &#8358;2,000 </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>Fresh Point</h3>
+						 <p class="product-price"><span>25 faith road temp-site Awka </span> coupon   </p>         <!--&#8358;2,000 -->
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Visit</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
@@ -124,9 +124,9 @@ include ('header.php');
 						<div class="product-image">
 							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
 						</div>
-						<h3>Egusi Soup</h3>
-						<p class="product-price"><span>Per Serving</span> &#8358;1,500 </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>Cami's Treat</h3>
+						<p class="product-price"><span> 23 works road Ogidi</span> Free delivery </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Visit</a>
 					</div>
 				</div>
 			</div>
