@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2023 at 12:21 PM
+-- Generation Time: Feb 05, 2023 at 08:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admindata` (
   `id` int(11) NOT NULL,
-  `res_id` varchar(50) NOT NULL,
+  `userid` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
   `username` varchar(100) NOT NULL,
   `pword` varchar(250) NOT NULL,
@@ -43,9 +43,12 @@ CREATE TABLE `admindata` (
 -- Dumping data for table `admindata`
 --
 
-INSERT INTO `admindata` (`id`, `res_id`, `email`, `username`, `pword`, `status`, `phone`, `address`, `updated_at`) VALUES
-(1, '1', 'admin@live.com', 'admin1', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '', '', '2023-02-05 10:18:33'),
-(2, '2', 'res@live.com', 'res1', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '', '', '2023-02-05 10:19:19');
+INSERT INTO `admindata` (`id`, `userid`, `email`, `username`, `pword`, `status`, `phone`, `address`, `updated_at`) VALUES
+(3, 'RES491', 'ofiaku@live.com', 'Ofiaku Meals', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '09080707070', '14 Ziks Avenue, Awka', '2023-02-05 18:17:49'),
+(4, 'RES851', 'freshpoint@live.com', 'Fresh Point', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232327', '25 Faith Road, Temp-site, Awka ', '2023-02-05 15:45:54'),
+(5, 'RES264', 'cami@live.com', 'Camis Treat', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232323', '23 Works Road, Ogidi', '2023-02-05 15:50:53'),
+(7, 'ADM773', 'somk@live.com', 'Williams', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '09067686877', '2, Mike Avenue, Awka', '2023-02-05 18:13:07'),
+(8, 'ADM373', 'manny@live.com', 'Mannie', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '08123232329', '2, Fagbile Street, Isheri, Lagos', '2023-02-05 16:07:26');
 
 -- --------------------------------------------------------
 
@@ -135,7 +138,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admindata`
 --
 ALTER TABLE `admindata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `food`
