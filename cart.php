@@ -2,9 +2,9 @@
 session_start();
 
 if(!isset($_SESSION['user'])){
-	header("location: signin.php"); 
-	}
-	else{
+header("location: signin.php"); 
+}
+
 ?> 
 
 <?php
@@ -84,7 +84,14 @@ if(isset($_SESSION['user'])){
 ?>
 								<li>
 									<div class="header-icons">
-										<a class="<?php echo str_ends_with($url, '/cart.php') ? 'current-list-item' : '' ?>" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+										<a class="<?php echo str_ends_with($url, '/cart.php') ? 'current-list-item' : '' ?>" href="cart.php">(<?php
+              if(isset($_SESSION["cart"])){
+              $count = count($_SESSION["cart"]); 
+              echo "$count"; 
+            }
+              else
+                echo "0";
+              ?>)<i class="fas fa-shopping-cart"></i></a>
 										<a class="<?php echo str_ends_with($url, '/wallet.php') ? 'current-list-item' : '' ?>" href="wallet.php"><i class="fas fa-wallet"></i></a>
 										<a class="<?php echo str_ends_with($url, '/order.php') ? 'current-list-item' : '' ?>" href="order.php"><i class="fas fa-shopping-bag"></i></a>
 										<a class="<?php echo str_ends_with($url, '/logout.php') ? 'current-list-item' : '' ?>" href="logout.php"><i class="fas fa-power-off"></i></a>
@@ -207,7 +214,4 @@ if(isset($_SESSION['user'])){
 			<!-- footer -->
 			<?php
 include ('footer.php');
-?>
-<?php
-}
 ?>

@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
   $url = $_SERVER['PHP_SELF'];
 ?>
 
@@ -69,12 +72,28 @@
               <li><a href="shop.php" class="<?php echo str_ends_with($url, '/shop.php') ? 'current-list-item' : '' ?>"> Shop</a></li>
 								
 								</li>
+								<?php
+if(isset($_SESSION['user'])){
+
+?>
 								<li>
 									<div class="header-icons">
-										<a class="<?php echo str_ends_with($url, '/signin.php') ? 'current-list-item' : '' ?>" href="signin.php"><i class="fas fa-user"></i> Sign In</a>
+										<a class="<?php echo str_ends_with($url, '/cart.php') ? 'current-list-item' : '' ?>" href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+										<a class="<?php echo str_ends_with($url, '/wallet.php') ? 'current-list-item' : '' ?>" href="wallet.php"><i class="fas fa-wallet"></i></a>
+										<a class="<?php echo str_ends_with($url, '/order.php') ? 'current-list-item' : '' ?>" href="order.php"><i class="fas fa-shopping-bag"></i></a>
+										<a class="<?php echo str_ends_with($url, '/logout.php') ? 'current-list-item' : '' ?>" href="logout.php"><i class="fas fa-power-off"></i></a>
 										</div>
 								</li>
-							</ul>
+							</ul><?php
+}else{?>	<li>
+<div class="header-icons">
+	<a class="<?php echo str_ends_with($url, '/signin.php') ? 'current-list-item' : '' ?>" href="signin.php"><i class="fas fa-user"></i> Sign In</a>
+	</div>
+</li>
+</ul>
+<?php
+}
+?>
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
