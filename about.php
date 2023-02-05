@@ -19,7 +19,7 @@ include ('header.php');
 			</div>
 		</div>
 	</div>
-	<!-- end search arewa -->
+	<!-- end search area -->
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -110,8 +110,9 @@ include ('header.php');
 						<p class="top-sub">Since Year 2022</p>
 						<h2>We are <span class="orange-text">Foodie</span></h2>
 						<p>We provide delicious meals ranging from traditional meals to continental dishes, giving our customers a taste of home.</p>
-						<p>We offer swift and affordable services to clients and promote health by ensuring our meals are prepared under standard hygienic conditions.</p>
-						<a href="about.html" class="boxed-btn mt-4">know more</a>
+						<p>We offer swift and affordable services and promote health by ensuring our stakeholders prepare their under standard hygienic conditions.</p>
+						<p>Behind the scene are awesome individuals who work tirelessly to offer seamless services.</p>
+						<a href="contact.php" class="boxed-btn mt-4">Know More</a>
 					</div>
 				</div>
 			</div>
@@ -119,59 +120,7 @@ include ('header.php');
 	</div>
 	<!-- end advertisement section -->
 
-	<!-- team section -->
-	<div class="mt-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">
-						<h3>Our <span class="orange-text">Team</span></h3>
-						<p>Behind the scene are awesome individuals who work tirelessly to offer seamless services. </p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-1"></div>
-						<h4>Jimmy Okezie <span>Chef</span></h4>
-						<ul class="social-link-team">
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-2"></div>
-						<h4>Mary Adenuga <span>Customer Support</span></h4>
-						<ul class="social-link-team">
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-3"></div>
-						<h4>Simon Achilonu <span>Delivery Agent</span></h4>
-						<ul class="social-link-team">
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- end team section -->
-
-	
-		<!-- footer -->
+			<!-- footer -->
 		<?php
 include ('footer.php');
 ?>

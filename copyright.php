@@ -1,4 +1,4 @@
-<br>
+<br/>
 <!-- copyright -->
 <div class="copyright">
 		<div class="container">

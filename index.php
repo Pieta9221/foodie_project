@@ -2,25 +2,7 @@
 include ('header.php');
 ?>
 	
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end search area -->
-
+	
 	<!-- hero area -->
 	<div class="hero-area hero-bg">
 		<div class="container">
@@ -31,8 +13,8 @@ include ('header.php');
 							<p class="subtitle">Tasty & Nutritious</p>
 							<h1>Delicious Meals at your Doorstep</h1>
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Food Collection</a>
-								<a href="contact.html" class="bordered-btn">Contact Us</a>
+								<a href="shop.php" class="boxed-btn">Food Collection</a>
+								<a href="contact.php" class="bordered-btn">Contact Us</a>
 							</div>
 						</div>
 					</div>
@@ -54,7 +36,7 @@ include ('header.php');
 						</div>
 						<div class="content">
 							<h3>Free Delivery</h3>
-							<p>When order exceeds &#8358;5,000</p>
+							<p>When order exceeds &#8358;15,000</p>
 						</div>
 					</div>
 				</div>
@@ -92,8 +74,8 @@ include ('header.php');
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Near</span> Restaurants</h3>
-						<p>Select from a list of our available restaurants</p>
+						<h3><span class="orange-text">Our</span> Menu</h3>
+						<p>Select from a list of our appetizing dishes.</p>
 					</div>
 				</div>
 			</div>
@@ -104,9 +86,9 @@ include ('header.php');
 						<div class="product-image">
 							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
 						</div>
-						<h3>Ofiaku Kitchen</h3>
-						<p class="product-price"><span>14 Ziks Avenue, Awka</span> Free delivery</p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-arrow-right"></i> Visit</a>
+						<h3>Spaghetti</h3>
+						<p class="product-price"><span>Per Serving</span> &#8358;1,200 </p>
+						<a href="shop.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 text-center">
@@ -114,9 +96,9 @@ include ('header.php');
 						<div class="product-image">
 							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
 						</div>
-						<h3>Fresh Point</h3>
-						 <p class="product-price"><span>25 Faith Road, Temp-site, Awka </span> Coupon   </p>         <!--&#8358;2,000 -->
-						<a href="cart.html" class="cart-btn"><i class="fas fa-arrow-right"></i> Visit</a>
+						<h3>Rice & Stew</h3>
+						<p class="product-price"><span>Per Serving</span> &#8358;2,000 </p>
+						<a href="shop.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
@@ -124,9 +106,9 @@ include ('header.php');
 						<div class="product-image">
 							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
 						</div>
-						<h3>Cami's Treat</h3>
-						<p class="product-price"><span> 23 Works Road, Ogidi</span> Free delivery </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-arrow-right"></i> Visit</a>
+						<h3>Egusi Soup</h3>
+						<p class="product-price"><span>Per Serving</span> &#8358;1,500 </p>
+						<a href="shop.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
 			</div>
@@ -155,9 +137,9 @@ include ('header.php');
                 <div class="content-column col-lg-6">
 					<h3><span class="orange-text">Deal</span> of the month</h3>
                     <h4>TASTY FRIED NOODLES</h4>
-                    <div class="text">Enjoy 20% off when you purchase our tasty fried noodles in the month of November.</div>
+                    <div class="text">Enjoy 20% off when you purchase our tasty fried noodles in the month of February.</div>
                     <!--Countdown Timer-->
-                    <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2022/11/30"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
+                    <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2023/02/28"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
                 	<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
             </div>
@@ -225,7 +207,7 @@ include ('header.php');
 	<!-- shop banner -->
 	<section class="shop-banner">
     	<div class="container">
-        	<h3>Ember sale is on! <br> with big <span class="orange-text">Discounts...</span></h3>
+        	<h3>Valentine sale is on! <br> with big <span class="orange-text">Discounts...</span></h3>
             <div class="sale-percent"><span>Sale! <br> up to</span>50% <span>off</span></div>
             <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
         </div>

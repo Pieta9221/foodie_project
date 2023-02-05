@@ -14,8 +14,8 @@ if(isset($_POST['submit'])){
 	
 	if($res2->num_rows === 1){
 		$rows = $res2->fetch_array();
-		$_SESSION['user'] = $rows['username'];
-    header('location:cart.php');
+		$_SESSION['user'] = $rows['email'];
+    header('location:profile.php');
 		exit();
   }else{
 		$query3  = "SELECT * FROM admindata WHERE email = '$email' && pword = '$pword3'";
