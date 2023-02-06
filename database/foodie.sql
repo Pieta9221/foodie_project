@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2023 at 08:01 PM
+-- Generation Time: Feb 06, 2023 at 08:39 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,6 +36,7 @@ CREATE TABLE `admindata` (
   `status` varchar(70) NOT NULL,
   `phone` varchar(200) NOT NULL,
   `address` varchar(200) NOT NULL,
+  `pic` varchar(200) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,43 +44,35 @@ CREATE TABLE `admindata` (
 -- Dumping data for table `admindata`
 --
 
-INSERT INTO `admindata` (`id`, `userid`, `email`, `username`, `pword`, `status`, `phone`, `address`, `updated_at`) VALUES
-(3, 'RES491', 'ofiaku@live.com', 'Ofiaku Meals', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '09080707070', '14 Ziks Avenue, Awka', '2023-02-05 18:17:49'),
-(4, 'RES851', 'freshpoint@live.com', 'Fresh Point', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232327', '25 Faith Road, Temp-site, Awka ', '2023-02-05 15:45:54'),
-(5, 'RES264', 'cami@live.com', 'Camis Treat', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232323', '23 Works Road, Ogidi', '2023-02-05 15:50:53'),
-(7, 'ADM773', 'somk@live.com', 'Williams', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '09067686877', '2, Mike Avenue, Awka', '2023-02-05 18:13:07'),
-(8, 'ADM373', 'manny@live.com', 'Mannie', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '08123232329', '2, Fagbile Street, Isheri, Lagos', '2023-02-05 16:07:26');
+INSERT INTO `admindata` (`id`, `userid`, `email`, `username`, `pword`, `status`, `phone`, `address`, `pic`, `updated_at`) VALUES
+(3, 'RES491', 'ofiaku@live.com', 'Ofiaku Kitchen', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '09080707070', '14 Ziks Avenue, Awka', '', '2023-02-06 06:33:57'),
+(4, 'RES851', 'freshpoint@live.com', 'Fresh Point', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232327', '25 Faith Road, Temp-site, Awka ', '', '2023-02-05 15:45:54'),
+(5, 'RES264', 'cami@live.com', 'Camis Treat', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232323', '23 Works Road, Ogidi', '', '2023-02-05 15:50:53'),
+(7, 'ADM773', 'somk@live.com', 'Williams', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '09067686877', '2, Mike Avenue, Awka', '', '2023-02-05 18:13:07'),
+(8, 'ADM373', 'manny@live.com', 'Mannie', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '08123232329', '2, Fagbile Street, Isheri, Lagos', '', '2023-02-05 16:07:26');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `food`
+-- Table structure for table `menu`
 --
 
-CREATE TABLE `food` (
-  `F_ID` int(30) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `price` int(30) NOT NULL,
-  `description` varchar(200) NOT NULL,
-  `R_ID` int(30) NOT NULL,
-  `images_path` varchar(200) NOT NULL,
-  `options` varchar(10) NOT NULL DEFAULT 'ENABLE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL,
+  `menuid` varchar(150) NOT NULL,
+  `name` varchar(210) NOT NULL,
+  `pic` varchar(250) NOT NULL,
+  `price` int(11) NOT NULL,
+  `userid` varchar(100) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `food`
+-- Dumping data for table `menu`
 --
 
-INSERT INTO `food` (`F_ID`, `name`, `price`, `description`, `R_ID`, `images_path`, `options`) VALUES
-(58, 'Juicy Masala Paneer Kathi Roll', 40, 'Juicy Masala Paneer Kathi Roll loaded with Masala Paneer chunks, onion & Mayo.', 1, 'images/Masala_Paneer_Kathi_Roll.jpg', 'ENABLE'),
-(59, 'Meurig Fish', 60, 'Try Meurig - A whole Pomfret fish grilled with tangy marination & served with grilled onions and tomatoes.', 2, 'images/Meurig.jpg', 'ENABLE'),
-(60, 'Chocolate Hazelnut Truffle', 99, 'Lose all senses over this very delicious chocolate hazelnut truffle.', 3, 'images/Chocolate_Hazelnut_Truffle.jpg', 'ENABLE'),
-(61, 'Happy Happy Choco Chip Shake', 80, 'Happy Happy Choco Chip Shake - a perfect party sweet treat.', 1, 'images/Happy_Happy_Choco_Chip_Shake.jpg', 'ENABLE'),
-(62, 'Spring Rolls', 65, 'Delicious Spring Rolls by Dragon Hut, Delhi. Order now!!!', 2, 'images/Spring_Rolls.jpg', 'ENABLE'),
-(63, 'Baahubali Thali', 75, 'Baahubali Thali is accompanied by Kattapa Biriyani, Devasena Paratha, Bhalladeva Patiala Lassi', 3, 'images/Baahubali_Thali.jpg', 'ENABLE'),
-(65, 'Coffee', 25, 'concentrated coffee made by forcing pressurized water through finely ground coffee beans.', 4, 'images/coffee.jpg', 'DISABLE'),
-(66, 'Tea', 20, 'The simple elixir of tea is of our natural world.', 4, 'images/tea.jpg', 'DISABLE'),
-(68, 'Paneer', 85, 'it', 6, 'images/paneer pakora.jpg', 'DISABLE');
+INSERT INTO `menu` (`id`, `menuid`, `name`, `pic`, `price`, `userid`, `updated_at`) VALUES
+(1, 'MENU153', 'Jollof Rice', 'pic/product-img-7.jpg', 2000, 'RES491', '2023-02-06 07:31:46');
 
 -- --------------------------------------------------------
 
@@ -104,7 +97,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `phone`, `address`, `pword`, `userid`, `updated_at`) VALUES
 (2, 'Mena1', 'mena67@live.com', '08123232327', '2, Fagbile Street, Isheri, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER215', '2023-02-04 00:34:52'),
-(3, 'Mannie1', 'mannie@live.com', '09012121212', '105, Emeka Offor Drive, Awka', '81dc9bdb52d04dc20036dbd8313ed055', 'USER484', '2023-02-04 00:40:20'),
+(3, 'Mannie09', 'mannie@live.com', '09012121212', '105, Emeka Offor Drive, Awka', '81dc9bdb52d04dc20036dbd8313ed055', 'USER484', '2023-02-05 23:01:16'),
 (4, 'Swiss22', 'swiss22@live.com', '09067686877', '2, James Crescent, Apapa, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER607', '2023-02-04 00:43:35');
 
 --
@@ -118,11 +111,10 @@ ALTER TABLE `admindata`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `food`
+-- Indexes for table `menu`
 --
-ALTER TABLE `food`
-  ADD PRIMARY KEY (`F_ID`,`R_ID`),
-  ADD KEY `R_ID` (`R_ID`);
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -141,10 +133,10 @@ ALTER TABLE `admindata`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `food`
+-- AUTO_INCREMENT for table `menu`
 --
-ALTER TABLE `food`
-  MODIFY `F_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+ALTER TABLE `menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -135,12 +135,12 @@ if(isset($_SESSION['user'])){
 						<table class="cart-table">
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
+                  <th class="product-remove"></th>
+									<th class="product-name">Menu Name</th>
+									<th class="product-name">Quantity</th>
+									<th class="product-name">Price</th>
+									<th class="product-name">Total</th>
 									
-									<th class="product-name">ID</th>
-									<th class="product-name">Username</th>
-									<th class="product-name">Email</th>
-									<th class="product-name">Phone</th>
-									<th class="product-name">Address</th>
 									
 								</tr>
 							</thead>
@@ -149,15 +149,17 @@ if(isset($_SESSION['user'])){
                 $query2  = "SELECT * FROM users ORDER BY username ASC";
                 $result2 = $config->query($query2);
                 if($result2->num_rows == 0){
-                  echo "Data not found";
+                 echo "Data not found";
+									
                 }else{
                   while($row = $result2 -> fetch_array()){
                     echo "<tr class='table-body-row'>";
+                    echo "<td class='product-remove'><a href='#'><i class='far fa-window-close'></i></a></td>";
                     echo "<td class='product-name'>".$row['userid']."</td>";
                     echo "<td class='product-name'>".$row['username']."</td>";
                     echo "<td class='product-name'>".$row['email']."</td>";
                     echo "<td class='product-name'>".$row['phone']."</td>";
-                    echo "<td class='product-name'>".$row['address']."</td>";
+                   
 									
                   echo "</tr>";
                 }
@@ -166,8 +168,43 @@ if(isset($_SESSION['user'])){
 								
 							</tbody>
 						</table>
+            <div class="cart-buttons">
+							<a href="cart.html" class="boxed-btn">Empty Cart</a>
+							<a href="checkout.html" class="boxed-btn black">Continue Shopping</a>
+						</div>
 					</div>
 				</div>
+
+        <div class="col-lg-4">
+					<div class="total-section">
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+									<th>Total</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="total-data">
+									<td><strong>Subtotal: </strong></td>
+									<td>&#8358;4,700</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Delivery: </strong></td>
+									<td>&#8358;300</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Total: </strong></td>
+									<td>&#8358;5,000</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="cart-buttons">
+							
+							<a href="checkout.html" class="boxed-btn black">Check Out</a>
+						</div>
+					</div>
+
 
 			</div>
 		</div>

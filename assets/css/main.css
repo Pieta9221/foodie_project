@@ -2328,7 +2328,8 @@ ul.social-link-team li a {
   color: #f28123;
 }
 .add-form form p input[type="text"],
-.add-form form p input[type="text"],
+.add-form form p input[type="number"],
+.add-form form p input[type="file"],
 .add-form form p input[type="tel"],
 .add-form form p input[type="email"],
 .add-form form p input[type="password"] {
@@ -2338,7 +2339,9 @@ ul.social-link-team li a {
   border-radius: 3px;
 }
 .contact-form form p input[type="text"],
+.contact-form form p input[type="file"],
 .contact-form form p input[type="tel"],
+.contact-form form p input[type="number"],
 .contact-form form p input[type="email"],
 .contact-form form p input[type="password"] {
   width: 49%;
