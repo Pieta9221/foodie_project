@@ -9,8 +9,8 @@ header("location: signin.php");
 
 ?> 
 <?php
-$email = $_SESSION['admin']; 
-$query3  = "SELECT * FROM admindata WHERE email = '$email'";
+$email = $_SESSION['user']; 
+$query3  = "SELECT * FROM users WHERE email = '$email'";
 $res3 = $config->query($query3);
 $row = $res3->fetch_array();
 ?>
