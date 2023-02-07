@@ -9,11 +9,17 @@ header("location: signin.php");
 
 ?> 
 <?php
-$email = $_SESSION['admin']; 
-$query3  = "SELECT * FROM admindata WHERE email = '$email'";
-$res3 = $config->query($query3);
-$row = $res3->fetch_array();
-$userid = $row['userid'];
+if(isset($_GET['menuid'])){
+  
+  
+  $menuid = $_GET['menuid'];
+  
+  $query3  = "SELECT * FROM menu WHERE menuid = '$menuid'";
+	$res3 = $config->query($query3);
+	$row = $res3->fetch_array();
+  
+  
+} 
 ?>
 <?php
 $error='';
@@ -22,47 +28,24 @@ if(isset($_POST['submit'])){
   
     $name = $_POST['name'];
     $price = $_POST['price'];
-    $menuid = "MENU".(rand(99,1000));
     
-    $photoname = $_FILES['pic']['name']; 
-    $phototype = $_FILES['pic']['type'];
-    $photosize = $_FILES['pic']['size'];
-    $photoloc = $_FILES['pic']['tmp_name']; 
-    move_uploaded_file($photoloc,"./assets/img/pic/".$photoname);
-    $pic2 = "pic/".$photoname; 
-  
-      $check = explode(".",$photoname);
-      $checkpath = strtolower(end($check));
-      $arraytype = array("jpeg", "gif", "png", "jpg");
+    
+    
+    
+    $edit = "UPDATE menu SET name='$name', price = '$price' WHERE menuid='$menuid'";
+    
+    if($config->query($edit)===TRUE){
       
-      if(in_array($checkpath, $arraytype) === FALSE){
-        $error = "Please choose a valid image type like jpeg, gif, png, or jpg";
-       
-      }
-      elseif($photosize > 5120000){
-        $error = "Image size should not be more than 5MB";
-          
-      }
-      else{
-       
-    $query4 = "SELECT * FROM menu WHERE menuid = '$menuid'";
-    $res4 = $config->query($query4);
-    if ($res4->num_rows>0){
-    $error = "Menu already added";
-        
+      $success = "Menu successfully edited";
+      header("location:menu.php");
     } else{
-    $insert = "INSERT INTO menu (menuid, name, pic, price, userid) VALUES ('$menuid', '$name', '$pic2', '$price', '$userid')";
-    if($config->query($insert)===TRUE){
-          echo "<script> alert('$name, successfully added') </script>";
-         
-        } else{
-          $error = "Ooops! Problem with adding $name";
-        }
-      }
+      $error = "Ooops! Problem with editing menu, try again";
+    }
       }
   
-    }
+
 ?>
+
 
 <?php
   $url = $_SERVER['PHP_SELF'];
@@ -168,7 +151,7 @@ if(isset($_POST['submit'])){
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>find menu information</p>
+						<p>edit menu information</p>
 						<h1>Menu</h1>
 					</div>
 				</div>
@@ -177,87 +160,51 @@ if(isset($_POST['submit'])){
 	</div>
 	<!-- end breadcrumb section -->
 
-	<!-- cart -->
-	<div class="cart-section mt-150 mb-150">
+	<!-- contact form -->
+	<div class="contact-from-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-					<p class="error"><?php echo $error;  ?></p>
-					<p class="success"><?php echo $success;  ?></p>
-						<table class="cart-table">
-							<thead class="cart-table-head">
-								<tr class="table-head-row">
-                  
-									<th class="product-image">Menu Image</th>
-									<th class="product-name">ID</th>
-									<th class="product-name">Menu Name</th>
-									<th class="product-name">Menu Price</th>
-									<th class="product-name">Edit</th>
-									<th class="product-remove">Remove</th>
-									
-									
-								</tr>
-							</thead>
-							<tbody>
-                <?php
-                $query2  = "SELECT * FROM menu WHERE userid = '$userid' ORDER BY name ASC";
-                $result2 = $config->query($query2);
-                if($result2->num_rows == 0){
-                  echo "Data not found";
-                }else{
-                  while($row = $result2 -> fetch_array()){
-                    echo "<tr class='table-body-row'>";
-                    echo "<td class='product-image'><img src="."assets/img/".$row['pic']."></td>";
-                    echo "<td class='product-name'>".$row['menuid']."</td>";
-                    echo "<td class='product-name'>".$row['name']."</td>";
-                    echo "<td class='product-name'>"."&#8358;".$row['price']."</td>";
-                    
-                    echo "<td class='product-remove'><a href='editmenu.php?menuid=".$row['menuid']." '><i class='far fa-edit'></i></a></td>";
-										echo "<td class='product-remove'><a href='deletemenu.php?menuid=".$row['menuid']."'  onclick='return confirm(`Are you sure want to delete this record?`)'><i class='far fa-window-close'></i></a></td>";
-                    
-                  echo "</tr>";
-                }
-                }
-                ?>  
-								
-							</tbody>
-						</table>
+				
+				<div class="col-lg-4">
+					<div class="contact-form-wrap">
+          <div class="contact-form-box">
+							<h4> <i class="fas fa-book"></i>Menu Information</h4>
+							
+							<?php echo "<div class='product-image'><img src="."assets/img/".$row['pic']."></div>"; ?>
+							<p>Menu Name: <?php echo $row['name']?>  <br>  ID: <?php echo $row['menuid']?> <br>  Price: &#8358; <?php echo $row['price']?> </p>
+						</div>
+						
 					</div>
 				</div>
 
-        <div class="col-lg-4">
-          
-        
-          <div class="form-title">
-          <h2>Add New</h2>
-          <p class="error"><?php echo $error;  ?></p>
-          </div>
-           <div class="add-form">
-          <form method="POST" enctype="multipart/form-data">
-            <p>
-              <input type="file" placeholder="Menu Image" name="pic" accept="image/*" required/>
-            </p>
-
-            <p>
-              <input type="text" placeholder="Menu Name" name="name"  required/>
-            </p>
-            <p>
-              <input type="number" placeholder="Menu Price" name="price" required/>
-            </p>
-                               
-            
-            <p><input type="submit" name="submit" value="Add"></p>
-
-            
-          </form>
-        </div>
-        
-      
-
-
-    </div>
-  </div>
+        <div class="col-lg-8 mb-5 mb-lg-0">
+					<div class="form-title">
+						<h2>Edit Menu</h2>
+						<p class="error"><?php echo $error;  ?></p>
+						<p class="success"><?php echo $success;  ?></p>
+						</div>
+				 	<div id="form_status"></div>
+					<div class="add-form">
+						<form method="POST" >
+							<p>
+								<input type="text" value="<?php echo $row['name']?>" name="name"  required/>
+								
+							</p>
+							
+							<p>
+								<input type="number" value="<?php echo $row['price']?>" name="price" required/>
+								
+							</p>
+             
+							<p><input type="submit" name="submit" value="Edit Profile"></p>
+              
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end contact form -->
 </div>
 	<!-- end cart -->
 
