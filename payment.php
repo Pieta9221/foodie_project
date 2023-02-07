@@ -139,19 +139,19 @@ $gtotal = 0;
     $price =  $values["food_price"];
     $total = ($values["food_quantity"] * $values["food_price"]);
     $userid = $values["userid"];
-    $username = $_SESSION["login_user2"];
-    $order_date = date('Y-m-d');
+    $username = $row["username"];
+    $orderdate = date('Y-m-d');
     
     $gtotal = $gtotal + $total;
 
 
-     $query = "INSERT INTO ORDERS (menuid, foodname, price,  quantity, order_date, username, userid) 
-              VALUES ('" . $menuid . "','" . $foodname . "','" . $price . "','" . $quantity . "','" . $order_date . "','" . $username . "','" . $userid . "')";
-             
+ $query = "INSERT INTO orders (menuid, foodname, price,  quantity, orderdate, username, userid) VALUES ('$menuid', '$foodname', '$price', '$quantity', '$orderdate', '$username', '$userid')";
+    //          
+//  $query = "INSERT INTO ORDERS (menuid, foodname, price,  quantity, orderdate, username, userid) 
+//               VALUES ('" . $menuid . "','" . $foodname . "','" . $price . "','" . $quantity . "','" . $orderdate . "','" . $username . "','" . $userid . "')";
 
-              $success = $conn->query($query);         
-
-      if(!$success)
+            $success = $config->query($query);
+     if(!$success)
       {
         ?>
         <div class="container">
@@ -184,7 +184,9 @@ $gtotal = 0;
         
 
 
-			<!-- footer -->
+<br><br><br><br><br><br>
+
+
 			<?php
 include ('footer.php');
 ?>
