@@ -96,6 +96,16 @@ if(isset($_POST['submit'])){
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
+	<style>
+		.adminimg{
+			height:200px;
+			width:200px;
+			border-radius:500px;
+			border: 0px solid;
+			margin-bottom:10px;
+		}
+	</style>
+
 </head>
 <body>
 	
@@ -179,7 +189,7 @@ if(isset($_POST['submit'])){
 					<div class="contact-form-wrap">
           <div class="contact-form-box">
 							<h4> <i class="far fa-user"></i>User Information</h4>
-							<?php echo "<div class='product-image'><img src="."assets/img/".$row['pic']."></div>"; ?>
+							<?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
 							<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
 						</div>
 						<div class="contact-form-box">
