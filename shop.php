@@ -51,7 +51,7 @@ include ('header.php');
 			<?php
 			require 'connection.php';
 			$config = new mysqli ($host, $user, $pwd, $database);
-			$query2  = "SELECT * FROM admindata WHERE status = 'Restaurant' ORDER BY name ASC";
+			$query2  = "SELECT * FROM admindata WHERE status = 'Restaurant' ORDER BY username ASC";
                 $result2 = $config->query($query2);
                 if($result2->num_rows == 0){
                   echo "No restaurant currently available!";
@@ -62,9 +62,9 @@ include ('header.php');
 						<div class="product-image">
 							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
 						</div>
-						<h3><?php ?></h3>
-						<p class="product-price"><span><?php $row['address']?></span> Free delivery</p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-arrow-right"></i> Visit</a>
+						<h3><?php echo $row['username']?></h3>
+						<p class="product-price"><span><?php echo $row['address']?></span></p>
+						<?php echo "<a href='shop2.php?userid=".$row['userid']." ' class='cart-btn'><i class='fas fa-arrow-right'></i> Visit</a></td>"; ?>
 					</div>
 				</div>
 			<?php
@@ -74,54 +74,7 @@ include ('header.php');
 				
 			
 	</div>
-	<!-- end product section -->
-	<!-- product section -->
-	<!-- <div class="product-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">	
-						<h3><span class="orange-text">Nearby</span> Restaurants</h3>
-						<p>Select from a list of our available restaurants</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-						</div>
-						<h3>Ofiaku Kitchen</h3>
-						<p class="product-price"><span>14 Ziks Avenue, Awka</span> Free delivery</p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-arrow-right"></i> Visit</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-						</div>
-						<h3>Fresh Point</h3>
-						 <p class="product-price"><span>25 Faith Road, Temp-site, Awka </span> Coupon   </p>         <!--&#8358;2,000 -->
-						<a href="cart.html" class="cart-btn"><i class="fas fa-arrow-right"></i> Visit</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-						</div>
-						<h3>Cami's Treat</h3>
-						<p class="product-price"><span> 23 Works Road, Ogidi</span> Free delivery </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-arrow-right"></i> Visit</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- end product section -->
+	
 	
 		<!-- footer -->
 		<?php

@@ -1,6 +1,24 @@
 <?php
 include ('header.php');
 ?>
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search arewa -->
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -17,60 +35,50 @@ include ('header.php');
 	</div>
 	<!-- end breadcrumb section -->
 
-	<!-- products -->
+	<!-- product section -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text">Nearby</span> Restaurants</h3>
+						<p>Select from a list of our available restaurants</p>
+					</div>
+				</div>
+			</div>
 
 			<div class="row">
-        <?php
-        require 'connection.php';
-        $config = new mysqli ($host, $user, $pwd, $database);
-        
-        $sql = "SELECT * FROM FOOD WHERE options = 'ENABLE' ORDER BY F_ID";
-        $res2 = $config->query($sql);
-        
-        if ($res2->num_rows> 0){
-          
-        
-          while($row = $result2 -> fetch_array()){
-          
-        
-        ?>
-        
-                
-			<div class="row product-lists">
-        <form method="post" action="cart.php?action=add&id=<?php echo $row["F_ID"]; ?>">
+			<?php
+			require 'connection.php';
+
+			$config = new mysqli ($host, $user, $pwd, $database);
+			if(isset($_GET['userid'])){
+				$userid = $_GET['userid'];
+				$query2  = "SELECT * FROM menu WHERE userid = $userid ";
+                $result2 = $config->query($query2);
+                if($result2->num_rows == 0){
+                  echo "No menu currently available!";
+                }else{
+                  while($row = $result2 -> fetch_array()){?> 
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<img src="<?php echo $row["images_path"]; ?>"  alt=""></a>
+						<?php echo "<a href='single-product.html'><img src="."assets/img/".$row['pic']."></a>"; ?>
 						</div>
-						<h3><?php echo $row["name"]; ?></h3>
-						<p class="product-price"><span>Per Serving</span> &#8358; <?php echo $row["price"]; ?></p>
-            <small>Quantity: <input type="number" min="1" max="25" name="quantity" class="form-control" value="1" style="width: 60px;"> </small>
-						<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
-            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>">
-            <input type="hidden" name="hidden_RID" value="<?php echo $row["R_ID"]; ?>">
-            <button type="submit"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-            
+						<h3><?php echo $row['name']; ?></h3>
+						<p class="product-price"><span><?php echo $row['price']; ?></span></p>
+						<?php echo "<a href='cart.php?userid=".$row['userid']." ' class='cart-btn'><i class='fas fa-arrow-right'></i> Visit</a></td>"; ?>
 					</div>
-
 				</div>
-        </form>
-        </div>	
-      <?php
-          }
-        }
-          ?>
+			<?php
+									}
+		}
+	}
+	?> 
+				
+			
 	</div>
-  
-
-
-</div>
-</div>
-
-	<!-- end products -->
-
+	
 	
 		<!-- footer -->
 		<?php
