@@ -3,7 +3,7 @@ session_start();
 require 'connection.php';
 $config = new mysqli ($host, $user, $pwd, $database);
 
-if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['user'])){
 header("location: signin.php"); 
 }
 
