@@ -66,7 +66,7 @@ include ('header.php');
 					 ?>
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
-						<form method ="POST" action="cart.php?action=add&id=<?php echo $row["menuid"]; ?>">
+						<form method ="POST" action="cart.php?action=add&menuid=<?php echo $row["menuid"]; ?>">
 						<div class="product-image">
 						<?php echo "<a class='pic' href='#'><img src="."assets/img/".$row['pic']."></a>"; ?></div>
 						<h3><?php echo $row['name']?></h3>

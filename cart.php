@@ -28,13 +28,13 @@ if(isset($_POST["add"]))
 {
 if(isset($_SESSION["cart"]))
 {
-$item_array_id = array_column($_SESSION["cart"], "food_id");
-if(!in_array($_GET["id"], $item_array_id))
+$item_array_id = array_column($_SESSION["cart"], "menuid");
+if(!in_array($_GET["menuid"], $item_array_id))
 {
 $count = count($_SESSION["cart"]);
 
 $item_array = array(
-'food_id' => $_GET["id"],
+'menuid' => $_GET["menuid"],
 'food_name' => $_POST["hidden_name"],
 'food_price' => $_POST["hidden_price"],
 'userid' => $_POST["hidden_userid"],
@@ -52,7 +52,7 @@ echo '<script>window.location="cart.php"</script>';
 else
 {
 $item_array = array(
-'food_id' => $_GET["id"],
+'menuid' => $_GET["menuid"],
 'food_name' => $_POST["hidden_name"],
 'food_price' => $_POST["hidden_price"],
 'userid' => $_POST["hidden_userid"],
@@ -67,7 +67,7 @@ if($_GET["action"] == "delete")
 {
 foreach($_SESSION["cart"] as $keys => $values)
 {
-if($values["food_id"] == $_GET["id"])
+if($values["menuid"] == $_GET["menuid"])
 {
 unset($_SESSION["cart"][$keys]);
 echo '<script>alert("Food has been removed")</script>';
@@ -242,7 +242,7 @@ if(!empty($_SESSION["cart"]))
 				<td class='product-name'><?php echo $values["food_quantity"]; ?></td>
 				<td class='product-name'>  &#8358; <?php echo $values["food_price"]; ?></td>
 				<td class='product-name'>  &#8358; <?php echo number_format($values["food_quantity"] * $values["food_price"], 2); ?></td>
-				<td class='product-remove'><a href='cart.php?action=delete&id=<?php echo $values["food_id"]; ?>'><i class='far fa-window-close'></i></a></td>
+				<td class='product-remove'><a href='cart.php?action=delete&id=<?php echo $values["menuid"]; ?>'><i class='far fa-window-close'></i></a></td>
 				</tr>
 				<?php 
 				$total = $total + ($values["food_quantity"] * $values["food_price"]);
@@ -260,8 +260,11 @@ if(!empty($_SESSION["cart"]))
 							</tbody>
 						</table>
             <div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Empty Cart</a>
-							<a href="checkout.html" class="boxed-btn black">Continue Shopping</a>
+				<?php echo "<a href='cart.php?action=empty' class='boxed-btn'></i> Empty Cart</a></td>"; ?>
+
+				<?php echo "<a href='shop2.php?userid=".$values['userid']." ' class='boxed-btn'>Continue Shopping</a></td>"; ?>
+
+				
 						</div>
 					</div>
 				</div>
@@ -276,24 +279,17 @@ if(!empty($_SESSION["cart"]))
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="total-data">
-									<td><strong>Subtotal: </strong></td>
-									<td>&#8358;4,700</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Delivery: </strong></td>
-									<td>&#8358;300</td>
-								</tr>
+							
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>&#8358;5,000</td>
+									<td>&#8358;<?php echo number_format($total, 2); ?> </td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Update Cart</a>
-							<a href="checkout.html" class="boxed-btn black">Check Out</a>
-						</div>
+							
+					<?php echo "<a href='payment.php' class='boxed-btn'></i> Checkout</a></td>"; ?>		
+					</div>
 					</div>
 
 					
