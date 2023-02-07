@@ -133,20 +133,20 @@ $gtotal = 0;
   foreach($_SESSION["cart"] as $keys => $values)
   {
 
-    $menuid = $values["food_id"];
+    $menuid = $values["menuid"];
     $foodname = $values["food_name"];
     $quantity = $values["food_quantity"];
     $price =  $values["food_price"];
     $total = ($values["food_quantity"] * $values["food_price"]);
-    $R_ID = $values["R_ID"];
+    $userid = $values["userid"];
     $username = $_SESSION["login_user2"];
     $order_date = date('Y-m-d');
     
     $gtotal = $gtotal + $total;
 
 
-     $query = "INSERT INTO ORDERS (F_ID, foodname, price,  quantity, order_date, username, R_ID) 
-              VALUES ('" . $F_ID . "','" . $foodname . "','" . $price . "','" . $quantity . "','" . $order_date . "','" . $username . "','" . $R_ID . "')";
+     $query = "INSERT INTO ORDERS (menuid, foodname, price,  quantity, order_date, username, userid) 
+              VALUES ('" . $menuid . "','" . $foodname . "','" . $price . "','" . $quantity . "','" . $order_date . "','" . $username . "','" . $userid . "')";
              
 
               $success = $conn->query($query);         
