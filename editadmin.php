@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
-		$photoname = $_FILES['pic']['name']; 
+	$photoname = $_FILES['pic']['name']; 
     $phototype = $_FILES['pic']['type'];
     $photosize = $_FILES['pic']['size'];
     $photoloc = $_FILES['pic']['tmp_name']; 
