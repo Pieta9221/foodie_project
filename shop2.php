@@ -41,8 +41,8 @@ include ('header.php');
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Nearby</span> Restaurants</h3>
-						<p>Select from a list of our available restaurants</p>
+						<h3><span class="orange-text">Available</span> Menu</h3>
+						<p>Select from a list of our available menu</p>
 					</div>
 				</div>
 			</div>
@@ -54,24 +54,23 @@ include ('header.php');
 			$config = new mysqli ($host, $user, $pwd, $database);
 			if(isset($_GET['userid'])){
 				$userid = $_GET['userid'];
-				$query2  = "SELECT * FROM menu WHERE userid = $userid ";
+				$query2  = "SELECT * FROM menu WHERE userid = '$userid' ORDER BY name ASC";
                 $result2 = $config->query($query2);
                 if($result2->num_rows == 0){
-                  echo "No menu currently available!";
+                  echo "No restaurant currently available!";
                 }else{
                   while($row = $result2 -> fetch_array()){?> 
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-						<?php echo "<a href='single-product.html'><img src="."assets/img/".$row['pic']."></a>"; ?>
-						</div>
-						<h3><?php echo $row['name']; ?></h3>
-						<p class="product-price"><span><?php echo $row['price']; ?></span></p>
-						<?php echo "<a href='cart.php?userid=".$row['userid']." ' class='cart-btn'><i class='fas fa-arrow-right'></i> Visit</a></td>"; ?>
+						<?php echo "<a href='single-product.html'><img src="."assets/img/".$row['pic']."></a>"; ?></div>
+						<h3><?php echo $row['name']?></h3>
+						<p class="product-price"><span>Per Serving</span> &#8358;<?php echo $row['price']?></p>
+						<?php echo "<a href='cart.php?userid=".$row['userid']." ' class='cart-btn'><i class='fas fa-shopping-cart'></i> Add Cart</a></td>"; ?>
 					</div>
 				</div>
 			<?php
-									}
+				}
 		}
 	}
 	?> 
