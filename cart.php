@@ -18,6 +18,86 @@ $row = $res3->fetch_array();
   $url = $_SERVER['PHP_SELF'];
 ?>
 
+
+
+
+<?php
+
+
+if(isset($_POST["add"]))
+{
+if(isset($_SESSION["cart"]))
+{
+$item_array_id = array_column($_SESSION["cart"], "food_id");
+if(!in_array($_GET["id"], $item_array_id))
+{
+$count = count($_SESSION["cart"]);
+
+$item_array = array(
+'food_id' => $_GET["id"],
+'food_name' => $_POST["hidden_name"],
+'food_price' => $_POST["hidden_price"],
+'userid' => $_POST["hidden_userid"],
+'food_quantity' => $_POST["quantity"]
+);
+$_SESSION["cart"][$count] = $item_array;
+echo '<script>window.location="cart.php"</script>';
+}
+else
+{
+echo '<script>alert("Food already added to cart")</script>';
+echo '<script>window.location="cart.php"</script>';
+}
+}
+else
+{
+$item_array = array(
+'food_id' => $_GET["id"],
+'food_name' => $_POST["hidden_name"],
+'food_price' => $_POST["hidden_price"],
+'userid' => $_POST["hidden_userid"],
+'food_quantity' => $_POST["quantity"]
+);
+$_SESSION["cart"][0] = $item_array;
+}
+}
+if(isset($_GET["action"]))
+{
+if($_GET["action"] == "delete")
+{
+foreach($_SESSION["cart"] as $keys => $values)
+{
+if($values["food_id"] == $_GET["id"])
+{
+unset($_SESSION["cart"][$keys]);
+echo '<script>alert("Food has been removed")</script>';
+echo '<script>window.location="cart.php"</script>';
+}
+}
+}
+}
+
+if(isset($_GET["action"]))
+{
+if($_GET["action"] == "empty")
+{
+foreach($_SESSION["cart"] as $keys => $values)
+{
+
+unset($_SESSION["cart"]);
+echo '<script>alert("Cart is made empty!")</script>';
+echo '<script>window.location="cart.php"</script>';
+
+}
+}
+}
+
+
+?>
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,6 +207,10 @@ if(isset($_SESSION['user'])){
 	<!-- end breadcrumb section -->
 
 	<!-- cart -->
+	<?php
+if(!empty($_SESSION["cart"]))
+{
+  ?>
 	<div class="cart-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
@@ -135,36 +219,43 @@ if(isset($_SESSION['user'])){
 						<table class="cart-table">
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
-                  <th class="product-remove"></th>
+                  
 									<th class="product-name">Menu Name</th>
 									<th class="product-name">Quantity</th>
 									<th class="product-name">Price</th>
 									<th class="product-name">Total</th>
+									<th class="product-remove"></th>
 									
 									
 								</tr>
 							</thead>
 							<tbody>
                 <?php
-                $query2  = "SELECT * FROM users ORDER BY username ASC";
-                $result2 = $config->query($query2);
-                if($result2->num_rows == 0){
-                 echo "Data not found";
-									
-                }else{
-                  while($row = $result2 -> fetch_array()){
-                    echo "<tr class='table-body-row'>";
-                    echo "<td class='product-remove'><a href='#'><i class='far fa-window-close'></i></a></td>";
-                    echo "<td class='product-name'>".$row['userid']."</td>";
-                    echo "<td class='product-name'>".$row['username']."</td>";
-                    echo "<td class='product-name'>".$row['email']."</td>";
-                    echo "<td class='product-name'>".$row['phone']."</td>";
+               $total = 0;
+				foreach($_SESSION["cart"] as $keys => $values)
+				{
+				?>
+							
+                    <tr class='table-body-row'>
+                  	
+                  <td class='product-name'><?php echo $values["food_name"]; ?></td>
+				<td class='product-name'><?php echo $values["food_quantity"]; ?></td>
+				<td class='product-name'>  &#8358; <?php echo $values["food_price"]; ?></td>
+				<td class='product-name'>  &#8358; <?php echo number_format($values["food_quantity"] * $values["food_price"], 2); ?></td>
+				<td class='product-remove'><a href='cart.php?action=delete&id=<?php echo $values["food_id"]; ?>'><i class='far fa-window-close'></i></a></td>
+				</tr>
+				<?php 
+				$total = $total + ($values["food_quantity"] * $values["food_price"]);
+				}
+				?>
+				</tr>
+				</tbody>
+                   
+					
                    
 									
-                  echo "</tr>";
-                }
-                }
-                ?>  
+                  </tr>
+              
 								
 							</tbody>
 						</table>
@@ -175,29 +266,7 @@ if(isset($_SESSION['user'])){
 					</div>
 				</div>
 
-        <div class="col-lg-4">
-					<div class="total-section">
-						<table class="total-table">
-							<thead class="total-table-head">
-								<tr class="table-total-row">
-									<th>Total</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="total-data">
-									<td><strong>Subtotal: </strong></td>
-									<td>&#8358;4,700</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Delivery: </strong></td>
-									<td>&#8358;300</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Total: </strong></td>
-									<td>&#8358;5,000</td>
-								</tr>
-							</tbody>
+    
 						</table>
 						<div class="cart-buttons">
 							
@@ -209,9 +278,26 @@ if(isset($_SESSION['user'])){
 			</div>
 		</div>
 	</div>
+	<?php
+}
+if(empty($_SESSION["cart"]))
+{
+  ?>
+  <div class="container">
+      <div class="jumbotron">
+        <h1>Your Shopping Cart</h1>
+        <p>Oops! We can't smell any food here. Go back and <a href="shop.php">order now.</a></p>
+        
+      </div>
+      
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <?php
+}
+?>
 	<!-- end cart -->
 
 			<!-- footer -->
 			<?php
-include ('copyright.php');
+include ('footer.php');
 ?>

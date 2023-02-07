@@ -56,37 +56,68 @@ include ('header.php');
 				$userid = $_GET['userid'];
 				$query2  = "SELECT * FROM menu WHERE userid = '$userid' ORDER BY name ASC";
                 $result2 = $config->query($query2);
-                if($result2->num_rows == 0){
-                  echo "No restaurant currently available!";
-                }else{
-                  while($row = $result2 -> fetch_array()){?> 
+				
+                if($result2->num_rows > 0){
+					$count=0;
+					
+                  while($row = $result2 -> fetch_array()){
+					if ($count == 0)
+					 echo "<div class='row'>";
+					 ?>
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<form method ="POST" action="cart.php?action=add&id=<?php echo $row["menuid"]; ?>">
 						<div class="product-image">
-						<?php echo "<a href='#'><img src="."assets/img/".$row['pic']."></a>"; ?></div>
+						<?php echo "<a class='pic' href='#'><img src="."assets/img/".$row['pic']."></a>"; ?></div>
 						<h3><?php echo $row['name']?></h3>
 						<p class="product-price">&#8358;<?php echo $row['price']?></p>
 						<input type="number"  min="1" max="25" name="quantity" class="product-price" value="1" style="width: 60px;"> </h5>
 						<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
 						<input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>">
-						<input type="hidden" name="hidden_menuid" value="<?php echo $row["menuid"]; ?>">
-						<br>
-						<button type="submit" class="cart-btn" ><i class='fas fa-shopping-cart'></i> Add to Cart</button>
+						<input type="hidden" name="hidden_userid" value="<?php echo $row["userid"]; ?>">
 						
+						<br>
+						<button type="submit" name="add" class="cart-btn" ><i class='fas fa-shopping-cart'></i> Add to Cart</button>
+						</form>
 					</div>
 				</div>
-			<?php
-				}
-		}
-	}
-	?> 
 				
-				</form>
+			<?php
+		
+$count++;
+if($count==4)
+{
+  echo "</div>";
+  $count=0;
+}
+}
+?> 
+				
 	</div>
-	
-	
-		<!-- footer -->
-		<?php
+</div>
+<?php
+}
+else
+{
+  ?>
+
+  <div class="container">
+    <div class="jumbotron">
+      <center>
+         <label style="margin-left: 5px;color: red;"> <h1>Oops! No food is available.</h1> </label>
+        <p>Stay Hungry...! :P</p>
+      </center>
+       
+    </div>
+  </div>
+
+  <?php
+
+}
+			}
+?>
+
+
+<?php
 include ('footer.php');
 ?>
