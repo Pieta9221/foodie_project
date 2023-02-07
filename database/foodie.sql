@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2023 at 08:39 AM
+-- Generation Time: Feb 07, 2023 at 01:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,9 +45,9 @@ CREATE TABLE `admindata` (
 --
 
 INSERT INTO `admindata` (`id`, `userid`, `email`, `username`, `pword`, `status`, `phone`, `address`, `pic`, `updated_at`) VALUES
-(3, 'RES491', 'ofiaku@live.com', 'Ofiaku Kitchen', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '09080707070', '14 Ziks Avenue, Awka', '', '2023-02-06 06:33:57'),
-(4, 'RES851', 'freshpoint@live.com', 'Fresh Point', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232327', '25 Faith Road, Temp-site, Awka ', '', '2023-02-05 15:45:54'),
-(5, 'RES264', 'cami@live.com', 'Camis Treat', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232323', '23 Works Road, Ogidi', '', '2023-02-05 15:50:53'),
+(3, 'RES491', 'ofiaku@live.com', 'Ofiaku Kitchen', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '09080707070', '14 Ziks Avenue, Awka', 'pic/ofiaku.jpg', '2023-02-07 12:11:12'),
+(4, 'RES851', 'freshpoint@live.com', 'Fresh Point', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232327', '25 Faith Road, Temp-site, Awka ', 'pic/freshpoint.jpg', '2023-02-07 12:11:41'),
+(5, 'RES264', 'cami@live.com', 'Camis Treat', '81dc9bdb52d04dc20036dbd8313ed055', 'Restaurant', '08123232323', '23 Works Road, Ogidi', 'pic/camis.jpg', '2023-02-07 12:10:35'),
 (7, 'ADM773', 'somk@live.com', 'Williams', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '09067686877', '2, Mike Avenue, Awka', '', '2023-02-05 18:13:07'),
 (8, 'ADM373', 'manny@live.com', 'Mannie', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '08123232329', '2, Fagbile Street, Isheri, Lagos', '', '2023-02-05 16:07:26');
 
@@ -72,7 +72,14 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `menuid`, `name`, `pic`, `price`, `userid`, `updated_at`) VALUES
-(1, 'MENU153', 'Jollof Rice', 'pic/product-img-7.jpg', 2000, 'RES491', '2023-02-06 07:31:46');
+(1, 'MENU153', 'Jollof Rice', 'pic/product-img-7.jpg', 2500, 'RES491', '2023-02-06 10:21:08'),
+(3, 'MENU567', 'Semo & Vegetable Soup', 'pic/product-img-9.jpg', 1800, 'RES491', '2023-02-07 07:52:06'),
+(4, 'MENU806', 'Plantain Fritata', 'pic/product-img-8.jpg', 1200, 'RES491', '2023-02-07 07:54:56'),
+(5, 'MENU618', 'Regular Bread', 'pic/bread4.jpeg', 600, 'RES264', '2023-02-07 07:57:45'),
+(6, 'MENU844', '3 Inches Chocolate Cake', 'pic/cake1.jpeg', 3000, 'RES264', '2023-02-07 08:00:53'),
+(7, 'MENU322', 'Bread', 'pic/bread4.jpeg', 700, 'RES491', '2023-02-07 10:51:16'),
+(8, 'MENU579', 'Rice & Stew', 'pic/product-img-2.jpg', 2000, 'RES851', '2023-02-07 12:12:27'),
+(9, 'MENU506', 'Semo & Vegetable Soup', 'pic/product-img-9.jpg', 1800, 'RES851', '2023-02-07 12:12:51');
 
 -- --------------------------------------------------------
 
@@ -136,7 +143,7 @@ ALTER TABLE `admindata`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`

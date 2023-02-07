@@ -22,10 +22,30 @@ if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
+		$photoname = $_FILES['pic']['name']; 
+    $phototype = $_FILES['pic']['type'];
+    $photosize = $_FILES['pic']['size'];
+    $photoloc = $_FILES['pic']['tmp_name']; 
+    move_uploaded_file($photoloc,"./assets/img/pic/".$photoname);
+    $pic2 = "pic/".$photoname; 
+  
+      $check = explode(".",$photoname);
+      $checkpath = strtolower(end($check));
+      $arraytype = array("jpeg", "gif", "png", "jpg");
+      
+      if(in_array($checkpath, $arraytype) === FALSE){
+        $error = "Please choose a valid image type like jpeg, gif, png, or jpg";
+       
+      }
+      elseif($photosize > 5120000){
+        $error = "Image size should not be more than 5MB";
+          
+      }
+      else{
+          
     
     
-    
-    $edit = "UPDATE admindata SET username='$username', phone = '$phone', address = '$address' WHERE email='$email'";
+    $edit = "UPDATE admindata SET username='$username', phone = '$phone', pic = '$pic2', address = '$address' WHERE email='$email'";
     
     if($config->query($edit)===TRUE){
       
@@ -35,7 +55,7 @@ if(isset($_POST['submit'])){
       $error = "Ooops! Problem with editing profile, try again";
     }
       }
-  
+		}
 
 ?>
 
@@ -159,6 +179,7 @@ if(isset($_POST['submit'])){
 					<div class="contact-form-wrap">
           <div class="contact-form-box">
 							<h4> <i class="far fa-user"></i>User Information</h4>
+							<?php echo "<div class='product-image'><img src="."assets/img/".$row['pic']."></div>"; ?>
 							<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
 						</div>
 						<div class="contact-form-box">
@@ -176,7 +197,11 @@ if(isset($_POST['submit'])){
 						</div>
 				 	<div id="form_status"></div>
 					<div class="add-form">
-						<form method="POST" >
+						<form method="POST" enctype="multipart/form-data">
+						<p>
+								<input type="file"  name="pic"  required/>
+								
+							</p>
 							<p>
 								<input type="text" value="<?php echo $row['username']?>" name="username"  required/>
 								

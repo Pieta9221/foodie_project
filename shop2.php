@@ -62,11 +62,18 @@ include ('header.php');
                   while($row = $result2 -> fetch_array()){?> 
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
+						<form method ="POST" action="cart.php?action=add&id=<?php echo $row["menuid"]; ?>">
 						<div class="product-image">
-						<?php echo "<a href='single-product.html'><img src="."assets/img/".$row['pic']."></a>"; ?></div>
+						<?php echo "<a href='#'><img src="."assets/img/".$row['pic']."></a>"; ?></div>
 						<h3><?php echo $row['name']?></h3>
-						<p class="product-price"><span>Per Serving</span> &#8358;<?php echo $row['price']?></p>
-						<?php echo "<a href='cart.php?userid=".$row['userid']." ' class='cart-btn'><i class='fas fa-shopping-cart'></i> Add Cart</a></td>"; ?>
+						<p class="product-price">&#8358;<?php echo $row['price']?></p>
+						<input type="number"  min="1" max="25" name="quantity" class="product-price" value="1" style="width: 60px;"> </h5>
+						<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
+						<input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>">
+						<input type="hidden" name="hidden_menuid" value="<?php echo $row["menuid"]; ?>">
+						<br>
+						<button type="submit" class="cart-btn" ><i class='fas fa-shopping-cart'></i> Add to Cart</button>
+						
 					</div>
 				</div>
 			<?php
@@ -75,7 +82,7 @@ include ('header.php');
 	}
 	?> 
 				
-			
+				</form>
 	</div>
 	
 	

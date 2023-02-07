@@ -135,7 +135,8 @@ $row = $res3->fetch_array();
 				<div class="col-lg-6">
 					<div class="contact-form-wrap">
 						<div class="contact-form-box">
-							<h4> <i class="far fa-user"></i>Admin Information</h4>
+							<h4> <i class="far fa-user"></i>User Information</h4>
+							<?php echo "<div class='product-image'><img src="."assets/img/".$row['pic']."></div>"; ?>
 							<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
 						</div>
 						<div class="contact-form-box">

@@ -60,8 +60,7 @@ include ('header.php');
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-						</div>
+						<?php echo "<a class='pic' href='#'><img src="."assets/img/".$row['pic']."></a>"; ?></div>
 						<h3><?php echo $row['username']?></h3>
 						<p class="product-price"><span><?php echo $row['address']?></span></p>
 						<?php echo "<a href='shop2.php?userid=".$row['userid']." ' class='cart-btn'><i class='fas fa-arrow-right'></i> Visit</a></td>"; ?>

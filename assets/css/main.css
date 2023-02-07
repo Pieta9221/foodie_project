@@ -474,6 +474,7 @@ a.read-more-btn:hover {
 
 a.boxed-btn,
 a.bordered-btn,
+button.cart-btn,
 a.cart-btn {
   border-radius: 50px;
 }
@@ -1284,13 +1285,21 @@ div.owl-controls div.owl-nav div:hover {
   box-shadow: none;
 }
 
+button.cart-btn,
 a.cart-btn {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-
+.pic {
+  height: 200px;
+  width: 250px;
+}
+button.cart-btn {
+  font-weight: 400;
+}
 button[type="submit"]:hover,
+button.cart-btn,
 a.cart-btn:hover {
   background-color: #051922;
   color: #f28123;
@@ -2519,6 +2528,7 @@ p.product-price span {
   font-weight: 400;
 }
 
+button.cart-btn,
 a.cart-btn {
   font-family: "Poppins", sans-serif;
   display: inline-block;
