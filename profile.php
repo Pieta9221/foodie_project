@@ -52,6 +52,16 @@ $row = $res3->fetch_array();
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
+	<style>
+		.adminimg{
+			height:150px;
+			width:150px;
+			border-radius:500px;
+			border: 0px solid;
+			margin-bottom:30px;
+		}
+	</style>
+
 </head>
 <body>
 	
@@ -162,8 +172,9 @@ if(isset($_SESSION['user'])){
 				<div class="col-lg-4">
 					<div class="contact-form-wrap">
 					<div class="contact-form-box">
-							<h4> <i class="far fa-user"></i>User Information</h4>
-							<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
+						<?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
+						<h4> <i class="far fa-user"></i>User Information</h4>
+						<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
 						</div>
 						<div class="contact-form-box">
 							<h4><i class="fas fa-address-book"></i>Contact</h4>
