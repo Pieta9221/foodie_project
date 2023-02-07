@@ -266,15 +266,38 @@ if(!empty($_SESSION["cart"]))
 					</div>
 				</div>
 
-    
+				<div class="col-lg-4">
+					<div class="total-section">
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+									<th>Total</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="total-data">
+									<td><strong>Subtotal: </strong></td>
+									<td>&#8358;4,700</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Delivery: </strong></td>
+									<td>&#8358;300</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Total: </strong></td>
+									<td>&#8358;5,000</td>
+								</tr>
+							</tbody>
 						</table>
 						<div class="cart-buttons">
-							
+							<a href="cart.html" class="boxed-btn">Update Cart</a>
 							<a href="checkout.html" class="boxed-btn black">Check Out</a>
 						</div>
 					</div>
 
-
+					
+				</div>
 			</div>
 		</div>
 	</div>
