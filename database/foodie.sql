@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2023 at 01:15 PM
+-- Generation Time: Feb 07, 2023 at 04:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -89,6 +89,7 @@ INSERT INTO `menu` (`id`, `menuid`, `name`, `pic`, `price`, `userid`, `updated_a
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `pic` varchar(200) NOT NULL,
   `username` varchar(200) NOT NULL,
   `email` varchar(250) NOT NULL,
   `phone` varchar(100) NOT NULL,
@@ -102,10 +103,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `phone`, `address`, `pword`, `userid`, `updated_at`) VALUES
-(2, 'Mena1', 'mena67@live.com', '08123232327', '2, Fagbile Street, Isheri, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER215', '2023-02-04 00:34:52'),
-(3, 'Mannie09', 'mannie@live.com', '09012121212', '105, Emeka Offor Drive, Awka', '81dc9bdb52d04dc20036dbd8313ed055', 'USER484', '2023-02-05 23:01:16'),
-(4, 'Swiss22', 'swiss22@live.com', '09067686877', '2, James Crescent, Apapa, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER607', '2023-02-04 00:43:35');
+INSERT INTO `users` (`id`, `pic`, `username`, `email`, `phone`, `address`, `pword`, `userid`, `updated_at`) VALUES
+(2, '', 'Mena1', 'mena67@live.com', '08123232327', '2, Fagbile Street, Isheri, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER215', '2023-02-04 00:34:52'),
+(3, 'upic/user.jpg', 'Mannie09', 'mannie@live.com', '09012121212', '105, Emeka Offor Drive, Awka', '81dc9bdb52d04dc20036dbd8313ed055', 'USER484', '2023-02-07 15:11:21'),
+(4, '', 'Swiss22', 'swiss22@live.com', '09067686877', '2, James Crescent, Apapa, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER607', '2023-02-04 00:43:35');
 
 --
 -- Indexes for dumped tables

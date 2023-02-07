@@ -14,37 +14,6 @@ $query3  = "SELECT * FROM users WHERE email = '$email'";
 $res3 = $config->query($query3);
 $row = $res3->fetch_array();
 ?>
-<?php
-$error='';
-$success='';
-if(isset($_POST['submit'])){
-
-	$photoname = $_FILES['pic']['name']; 
-    $phototype = $_FILES['pic']['type'];
-    $photosize = $_FILES['pic']['size'];
-    $photoloc = $_FILES['pic']['tmp_name']; 
-    move_uploaded_file($photoloc,"./assets/img/upic/".$photoname);
-    $pic2 = "upic/".$photoname;
-
-    $username = $_POST['username'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-    
-    
-    
-    $edit = "UPDATE users SET username='$username', phone = '$phone', pic = '$pic2', address = '$address' WHERE email='$email'";
-    
-    if($config->query($edit)===TRUE){
-      
-      $success = "$username, profile successfully edited";
-      header("location:profile.php");
-    } else{
-      $error = "Ooops! Problem with editing profile, try again";
-    }
-      }
-  
-
-?>
 
 <?php
   $url = $_SERVER['PHP_SELF'];
@@ -82,6 +51,16 @@ if(isset($_POST['submit'])){
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
+
+    <style>
+		.adminimg{
+			height:150px;
+			width:150px;
+			border-radius:500px;
+			border: 0px solid;
+			margin-bottom:10px;
+		}
+	</style>
 
 </head>
 <body>
@@ -133,7 +112,7 @@ if(isset($_SESSION['user'])){
 }?>
 						</nav>
 						
-												<div class="mobile-menu"></div>
+						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
 				</div>
@@ -150,8 +129,8 @@ if(isset($_SESSION['user'])){
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-          <p>edit your profile</p>
-						<h1><?php echo $row['username']; ?></h1>
+						<p>Wallet Balance</p>
+						<h1>&#8358; 20,000.00</h1>
 					</div>
 				</div>
 			</div>
@@ -159,55 +138,41 @@ if(isset($_SESSION['user'])){
 	</div>
 	<!-- end breadcrumb section -->
 
-	<!-- contact form -->
 	<div class="contact-from-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-				
-				<div class="col-lg-4">
+                <div class="col-lg-4">
 					<div class="contact-form-wrap">
-          <div class="contact-form-box">
-							<h4> <i class="far fa-user"></i>User Information</h4>
-							<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
-						</div>
-						<div class="contact-form-box">
-							<h4><i class="fas fa-address-book"></i>Contact</h4>
-							<p>Phone: <?php echo $row['phone']?>  <br> Email: <?php echo $row['email']?> <br> Address: <?php echo $row['address']?> </p>
+					<div class="contact-form-box">
+							<h4> <i class="far fa-user"></i>Hello <?php echo $row['username']?></h4>
+                            <?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
+							<p> User ID: <?php echo $row['userid']?>  </p>
 						</div>
 					</div>
 				</div>
-
-        <div class="col-lg-8 mb-5 mb-lg-0">
+				<div class="col-lg-8 mb-5 mb-lg-0">
 					<div class="form-title">
-						<h2>Edit Profile</h2>
-						<p class="error"><?php echo $error;  ?></p>
-						<p class="success"><?php echo $success;  ?></p>
+						<h2>Wallet</h2>
+						
 						</div>
 				 	<div id="form_status"></div>
 					<div class="add-form">
-						<form method="POST" enctype="multipart/form-data">
-							<p>
-								<input type="file"  name="pic"  required/>
-								
-							</p>
-							<p>
-								<input type="text" value="<?php echo $row['username']?>" name="username"  required/>
-								
-							</p>
-							<p>
-								<input type="tel" value="<?php echo $row['phone']?>" name="phone"  required/>
-								
-							</p>
-							<p>
-								<input type="text" value="<?php echo $row['address']?>" name="address" required/>
-								
-							</p>
-             
-							<p><input type="submit" name="submit" value="Edit Profile"></p>
-              
+						<form method="POST" >
+						<a href="wallet.php">
+								<div  class="abc"> <i class="fas fa-plus"></i> &nbsp;  Deposit</div>
+            </a>
+						<a href="userorder.php">
+								<div  class="abc"> <i class="fas fa-credit-card"></i> &nbsp; Transaction History</div>
+            </a>
+						<a href="edituser.php">
+								<div  class="abc"> <i class="far fa-user"></i> &nbsp; Edit Profile</div>
+            </a>
+
+							
 						</form>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -215,5 +180,5 @@ if(isset($_SESSION['user'])){
 
 			<!-- footer -->
 			<?php
-include ('copyright.php');
+include ('footer.php');
 ?>
