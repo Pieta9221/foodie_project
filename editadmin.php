@@ -96,16 +96,7 @@ if(isset($_POST['submit'])){
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
-	<style>
-		.adminimg{
-			height:200px;
-			width:200px;
-			border-radius:500px;
-			border: 0px solid;
-			margin-bottom:10px;
-		}
-	</style>
-
+	
 </head>
 <body>
 	

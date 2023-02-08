@@ -1291,6 +1291,15 @@ a.cart-btn {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
+
+.adminimg {
+  height: 200px;
+  width: 200px;
+  border-radius: 500px;
+  border: 0px solid;
+  margin-bottom: 10px;
+}
+
 .pic {
   height: 200px;
   width: 250px;
