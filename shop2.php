@@ -75,7 +75,7 @@ if($count==4)
 }
 }
 ?> 
-				
+				 </div>
 	</div>
 </div>
 <?php
@@ -93,6 +93,8 @@ else
        
     </div>
   </div>
+  
+
 
   <?php
 

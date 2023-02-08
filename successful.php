@@ -6,7 +6,7 @@ $config = new mysqli ($host, $user, $pwd, $database);
 if(!isset($_SESSION['user'])){
 header("location: signin.php"); 
 }
-
+unset($_SESSION["cart"]);
 ?> 
 <?php
 $email = $_SESSION['user']; 
@@ -129,63 +129,23 @@ if(isset($_SESSION['user'])){
 	</div>
 	<!-- end breadcrumb section -->
 
- <?php
-$gtotal = 0;
-  foreach($_SESSION["cart"] as $keys => $values)
-  {
-
-    $menuid = $values["menuid"];
-    $foodname = $values["food_name"];
-    $quantity = $values["food_quantity"];
-    $price =  $values["food_price"];
-    $total = ($values["food_quantity"] * $values["food_price"]);
-    $userid = $values["userid"];
-    $username = $row["username"];
-    $orderdate = date('Y-m-d');
-    
-    $gtotal = $gtotal + $total;
-
-
- $query = "INSERT INTO orders (menuid, foodname, price, quantity, orderdate, username, userid) VALUES ('$menuid', '$foodname', '$price', '$quantity', '$orderdate', '$username', '$userid')";
-    //          
-//  $query = "INSERT INTO ORDERS (menuid, foodname, price,  quantity, orderdate, username, userid) 
-//               VALUES ('" . $menuid . "','" . $foodname . "','" . $price . "','" . $quantity . "','" . $orderdate . "','" . $username . "','" . $userid . "')";
-
-            $success = $config->query($query);
-     if(!$success)
-      {
-        ?>
-        <div class="container">
-          <div class="jumbotron">
-            <h1>Something went wrong!</h1>
-            <p>Try again later.</p>
-          </div>
-        </div>
-
-        <?php
-      }
-      
-  }
-
-        ?>
+ 
         <div class="container jumbotron text-center">
-          <h2>Grand Total: &#8358; <?php echo number_format("$gtotal", 2); ?></h2>
-					<h5>Including all service charges (no delivery charges applied)</h5>
-					<br>
-					<a href="cart.php" class='boxed-btn'><i class='fas fa-arrow-left'></i> Back to cart</a>
-                    <?php if($wallet >= $gtotal){
-                         echo "<a href='successful.php' class='boxed-btn'> <i class='fas fa-arrow-right'></i> Make Payment</a>"; 	
-              
-                    }else {
-                        echo "<a href='fundwallet.php' name='deduct' class='boxed-btn'> <i class='fas fa-arrow-right'></i> Make Payment</a>"; 
-                    }
-						
-                       ?> 	
-				</div>
-        
+          <h2 class="text-center"> Thank you for Ordering at Foodie!</h2>
+          <h3 class="text-center"> The ordering process is now complete.</h3>
+<?php 
+  $num1 = rand(100000,999999); 
+  $num2 = rand(100000,999999); 
+ 
+  $number = $num1.$num2;
+?>
 
-
-<br><br><br><br><br><br>
+<h3 class="text-center"> <strong>Your Order Number:</strong> <span class="link"><?php echo "$number"; ?></span> </h3>
+				
+   <a href='profile.php' class='boxed-btn'> <i class='fas fa-arrow-right'></i> Go Back</a>     
+<br><br>
+</div>
+<br><br><br><br>
 
 
 			<?php
