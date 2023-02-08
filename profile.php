@@ -164,7 +164,14 @@ if(isset($_SESSION['user'])){
 					<div class="add-form">
 						<form method="POST" >
 						<a href="cart.php">
-								<div  class="abc"> <i class="fas fa-shopping-cart"></i> &nbsp;Cart</div>
+								<div  class="abc"> <i class="fas fa-shopping-cart"></i> &nbsp;Cart  (<?php
+              if(isset($_SESSION["cart"])){
+              $count = count($_SESSION["cart"]); 
+              echo "$count"; 
+            }
+              else
+                echo "0";
+              ?>) </div>
             </a>
 						<a href="wallet.php">
 								<div  class="abc"> <i class="fas fa-wallet"></i> &nbsp;Wallet</div>

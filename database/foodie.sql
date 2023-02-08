@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2023 at 04:29 PM
+-- Generation Time: Feb 08, 2023 at 02:52 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -84,6 +84,24 @@ INSERT INTO `menu` (`id`, `menuid`, `name`, `pic`, `price`, `userid`, `updated_a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `menuid` varchar(150) NOT NULL,
+  `foodname` varchar(120) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `orderdate` date NOT NULL,
+  `username` varchar(120) NOT NULL,
+  `userid` varchar(126) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -96,6 +114,7 @@ CREATE TABLE `users` (
   `address` varchar(200) NOT NULL,
   `pword` varchar(250) NOT NULL,
   `userid` varchar(100) NOT NULL,
+  `wallet` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -103,10 +122,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `pic`, `username`, `email`, `phone`, `address`, `pword`, `userid`, `updated_at`) VALUES
-(2, '', 'Mena1', 'mena67@live.com', '08123232327', '2, Fagbile Street, Isheri, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER215', '2023-02-04 00:34:52'),
-(3, 'upic/user.jpg', 'Mannie09', 'mannie@live.com', '09012121212', '105, Emeka Offor Drive, Awka', '81dc9bdb52d04dc20036dbd8313ed055', 'USER484', '2023-02-07 15:11:21'),
-(4, '', 'Swiss22', 'swiss22@live.com', '09067686877', '2, James Crescent, Apapa, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER607', '2023-02-04 00:43:35');
+INSERT INTO `users` (`id`, `pic`, `username`, `email`, `phone`, `address`, `pword`, `userid`, `wallet`, `updated_at`) VALUES
+(2, 'upic/profile.png', 'Mena1', 'mena67@live.com', '08123232327', '2, Fagbile Street, Isheri, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER215', 0, '2023-02-08 00:27:52'),
+(3, 'upic/user.jpg', 'Mannie09', 'mannie@live.com', '09012121212', '105, Emeka Offor Drive, Awka', '81dc9bdb52d04dc20036dbd8313ed055', 'USER484', 0, '2023-02-07 15:11:21'),
+(4, 'upic/ryan-hoffman-Ft4p5E9HjT-unsplash.jpg', 'Swiss22', 'swiss22@live.com', '09067686877', '2, James Crescent, Apapa, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER607', 0, '2023-02-08 00:15:20'),
+(5, 'upic/christina-wocintechchat-com-Zpzf7TLj_g-unsplash.jpg', 'Lexia67 ', 'lexia@live.com', '09067686877', '105, Emeka Offor Drive, Lagos', '81dc9bdb52d04dc20036dbd8313ed055', 'USER241', 0, '2023-02-08 00:29:29');
 
 --
 -- Indexes for dumped tables
@@ -122,6 +142,12 @@ ALTER TABLE `admindata`
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -147,10 +173,16 @@ ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

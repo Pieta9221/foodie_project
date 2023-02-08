@@ -13,8 +13,8 @@ $email = $_SESSION['admin'];
 $query3  = "SELECT * FROM admindata WHERE email = '$email'";
 $res3 = $config->query($query3);
 $row = $res3->fetch_array();
+$userid = $row['userid'];
 ?>
-
 <?php
   $url = $_SERVER['PHP_SELF'];
 ?>
@@ -52,7 +52,6 @@ $row = $res3->fetch_array();
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
-	
 </head>
 <body>
 	
@@ -83,7 +82,7 @@ $row = $res3->fetch_array();
 							<ul>
 							<li><a href="adminprofile.php" class="<?php echo str_ends_with($url, '/adminprofile.php') ? 'current-list-item' : '' ?>"> Profile</a></li>
               <li><a href="admin.php" class="<?php echo str_ends_with($url, '/admin.php') ? 'current-list-item' : '' ?>"> Admins</a></li>
-              <?php
+        			<?php
               if($row['status']=="Admin"){?>
         			<li><a href="users.php" class="<?php echo str_ends_with($url, '/users.php') ? 'current-list-item' : '' ?>"> <span>Users</span></a></li>
               <li><a href="shops.php" class="<?php echo str_ends_with($url, '/shops.php') ? 'current-list-item' : '' ?>"> Shops</a></li>
@@ -95,6 +94,7 @@ $row = $res3->fetch_array();
               ?>
               <li><a href="orders.php" class="<?php echo str_ends_with($url, '/orders.php') ? 'current-list-item' : '' ?>"> Orders</a></li>
               
+								
 								</li>
 								<li>
 									<div class="header-icons">
@@ -120,8 +120,8 @@ $row = $res3->fetch_array();
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-          <p>welcome back</p>
-						<h1><?php echo $row['username']; ?></h1>
+          <p>find order information</p>
+						<h1>Orders</h1>
 					</div>
 				</div>
 			</div>
@@ -129,46 +129,58 @@ $row = $res3->fetch_array();
 	</div>
 	<!-- end breadcrumb section -->
 
-	<div class="contact-from-section mt-150 mb-150">
+	<!-- cart -->
+	<div class="cart-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-				
-				<div class="col-lg-6">
-					<div class="contact-form-wrap">
-						<div class="contact-form-box">
-							<h4> <i class="far fa-user"></i>User Information</h4>
-							<?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
-							<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
-						</div>
-						<div class="contact-form-box">
-							<h4><i class="fas fa-address-book"></i>Contact</h4>
-							<p>Phone: <?php echo $row['phone']?>  <br> Email: <?php echo $row['email']?> <br> Address: <?php echo $row['address']?> </p>
-						</div>
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									
+                  <th class="product-name">Date</th>
+									<th class="product-name">Menu Name</th>
+									<th class="product-name">Quantity</th>
+									<th class="product-name">Price</th>
+									<th class="product-name">Ordered By</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+                <?php
+                $query2  = "SELECT * FROM orders WHERE userid='$userid' ORDER BY orderdate ASC";
+                $result2 = $config->query($query2);
+                if($result2->num_rows == 0){
+                  echo "Oops! No Order Placed Yet";
+                }else{
+                  while($rows = $result2 -> fetch_array()){
+                    echo "<tr class='table-body-row'>";
+                    echo "<td class='product-name'>".$rows['orderdate']."</td>";
+                    echo "<td class='product-name'>".$rows['foodname']."</td>";
+                    echo "<td class='product-name'>".$rows['quantity']."</td>";
+                    echo "<td class='product-name'>".$rows['price']."</td>";
+                    echo "<td class='product-name'>".$rows['username']."</td>";
+                  
+									
+                  echo "</tr>";
+                }
+                }
+                ?>   
+								
+							</tbody>
+						</table>
 					</div>
 				</div>
+					
+				
 
-        <div class="col-lg-6">
-        <div class="form-title">
-						<h2>Settings</h2>
-						
-						</div>
-				 	  <div class="add-form">
-						<a href="editadmin.php">
-								<div  class="abc"> <i class="far fa-user"></i> Edit Profile</div>
-            </a>
-							<a href="editadminpassword.php">
-              <div class="abc"> <i class="fas fa-unlock"></i> Edit Password</div>
-           </a>
-							
 
-							
-						</form>
-				</div>
-
-          
 			</div>
 		</div>
 	</div>
+	<!-- end cart -->
+
 			<!-- footer -->
 			<?php
 include ('copyright.php');

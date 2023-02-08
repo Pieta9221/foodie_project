@@ -240,7 +240,7 @@ if(!empty($_SESSION["cart"]))
                   	
                   <td class='product-name'><?php echo $values["food_name"]; ?></td>
 				<td class='product-name'><?php echo $values["food_quantity"]; ?></td>
-				<td class='product-name'>  &#8358; <?php echo $values["food_price"]; ?></td>
+				<td class='product-name'>  &#8358; <?php echo number_format($values["food_price"], 2); ?></td>
 				<td class='product-name'>  &#8358; <?php echo number_format($values["food_quantity"] * $values["food_price"], 2); ?></td>
 				<td class='product-remove'><a href='cart.php?action=delete&menuid=<?php echo $values["menuid"]; ?>'><i class='far fa-window-close'></i></a></td>
 				</tr>

@@ -172,7 +172,7 @@ $gtotal = 0;
 					<h5>Including all service charges (no delivery charges applied)</h5>
 					<br>
 					<a href="cart.php" class='boxed-btn'><i class='fas fa-arrow-left'></i> Back to cart</a>
-						<a href="cart.php" class='boxed-btn'><i class='fas fa-credit-card'></i> Make Payment</a>
+						<a href="cart.php" class='boxed-btn'><i class='fas fa-arrow-right'></i> Make Payment</a>
 				</div>
         
 

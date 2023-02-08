@@ -26,6 +26,7 @@ if(isset($_POST['submit'])){
     $userid = "ADM".(rand(99,1000));
     $pword = $_POST['pword'];
     $pword3 = md5($pword);
+		$pic = "upic/profile.png";
     
     
     $query4 = "SELECT * FROM admindata WHERE email = '$email'";
@@ -34,7 +35,7 @@ if(isset($_POST['submit'])){
     $error = "Email address already in use";
         
     } else{
-    $insert = "INSERT INTO admindata (username, email, phone, address, pword, userid, status) VALUES ('$username', '$email', '$phone', '$address', '$pword3', '$userid', '$status')";
+    $insert = "INSERT INTO admindata (username, email, phone, address, pword, userid, status, pic) VALUES ('$username', '$email', '$phone', '$address', '$pword3', '$userid', '$status', '$pic')";
     if($config->query($insert)===TRUE){
           echo "<script> alert('$username, successfully added') </script>";
          
