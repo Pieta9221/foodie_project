@@ -472,6 +472,7 @@ a.read-more-btn:hover {
   color: #f28123;
 }
 
+button.boxed-btn,
 a.boxed-btn,
 a.bordered-btn,
 button.cart-btn,
@@ -2696,6 +2697,13 @@ tr.total-data td strong {
 
 .cart-buttons {
   margin-top: 30px;
+}
+
+.card-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .cart-buttons a:first-child {

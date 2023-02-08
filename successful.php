@@ -142,7 +142,7 @@ if(isset($_SESSION['user'])){
 
 <h3 class="text-center"> <strong>Your Order Number:</strong> <span class="link"><?php echo "$number"; ?></span> </h3>
 				
-   <a href='profile.php' class='boxed-btn'> <i class='fas fa-arrow-left'></i> Go Back</a>     
+   <a href='wallet.php' class='boxed-btn'> <i class='fas fa-check-circle'></i> Done</a>     
 <br><br>
 </div>
 <br><br><br><br>

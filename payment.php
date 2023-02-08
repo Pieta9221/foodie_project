@@ -168,21 +168,53 @@ $gtotal = 0;
   }
 
         ?>
-        <div class="container jumbotron text-center">
+        <div class="container jumbotron">
+					<div class="text-center" >
           <h2>Grand Total: &#8358; <?php echo number_format("$gtotal", 2); ?></h2>
 					<h5>Including all service charges (no delivery charges applied)</h5>
+					</div>
 					<br>
+					<div class="card-buttons">
 					<a href="cart.php" class='boxed-btn'><i class='fas fa-arrow-left'></i> Back to cart</a>
-                    <?php if($wallet >= $gtotal){
-                         echo "<a href='successful.php' class='boxed-btn'> <i class='fas fa-arrow-right'></i> Make Payment</a>"; 	
+                    <?php if($wallet < $gtotal){
+                         echo "<a href='fundwallet.php' class='cart-btn'> <i class='fas fa-arrow-right'></i> Make Payment</a>"; 	
               
                     }else {
-                        echo "<a href='fundwallet.php' name='deduct' class='boxed-btn'> <i class='fas fa-arrow-right'></i> Make Payment</a>"; 
-                    }
+											
+											$wallet2 = $wallet - $gtotal;?>
+                        
+										<form method ="POST">
 						
-                       ?> 	
+									<input type="hidden" name="wallet2" value="<?php echo $wallet2; ?>">
+								
+									
+									<button type="submit" name="deduct" class='cart-btn jooo'><i class='fas fa-arrow-right'></i> Make Payment</button>
+								
+									</form>
+										</div>
+										
+						<?php
+                    }
+										$error = "";
+										if(isset($_POST['deduct'])){
+											$wallet2 = $_POST['wallet2'];
+											
+										 $edit = "UPDATE users SET wallet='$wallet2' WHERE email='$email'";
+											
+											if($config->query($edit)===TRUE){
+												
+												
+												header("location:successful.php");
+											} else{
+												$error = "Ooops! Problem with payment";
+											}
+												}
+									
+									?> 	
 				</div>
         
+				
+
 
 
 <br><br><br><br><br><br>
