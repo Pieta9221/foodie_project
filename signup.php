@@ -12,6 +12,8 @@
 			$pword2 = $_POST['pword2'];
 			$pword3 = md5($pword);
 			$userid = "USER".(rand(99,1000));
+			$pic = "upic/profile.png";
+			$wallet = 0;
 			
 			if($pword != $pword2){
 				$error = "$username, the passwords do not match!";
@@ -29,7 +31,7 @@
 					$error = "Email address already in use";
 					
 				} else{
-					$insert = "INSERT INTO users (username, email, phone, pword, address, userid) VALUES ('$username', '$email', '$phone', '$pword3', '$address', '$userid')";
+					$insert = "INSERT INTO users (username, email, phone, pword, address, userid, pic, wallet) VALUES ('$username', '$email', '$phone', '$pword3', '$address', '$userid', '$pic', '$wallet')";
 					if($config->query($insert)===TRUE){
 						echo "<script> alert('$username, you have successfully registered') </script>";
 						include('signin.php');

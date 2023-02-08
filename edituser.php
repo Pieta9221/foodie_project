@@ -30,7 +30,20 @@ if(isset($_POST['submit'])){
     $phone = $_POST['phone'];
     $address = $_POST['address'];
     
-    
+    	$check = explode(".",$photoname);
+      $checkpath = strtolower(end($check));
+      $arraytype = array("jpeg", "gif", "png", "jpg");
+      
+      if(in_array($checkpath, $arraytype) === FALSE){
+        $error = "Please choose a valid image type like jpeg, gif, png, or jpg";
+       
+      }
+      elseif($photosize > 5120000){
+        $error = "Image size should not be more than 5MB";
+          
+      }
+      else{
+          
     
     $edit = "UPDATE users SET username='$username', phone = '$phone', pic = '$pic2', address = '$address' WHERE email='$email'";
     
@@ -42,6 +55,7 @@ if(isset($_POST['submit'])){
       $error = "Ooops! Problem with editing profile, try again";
     }
       }
+		}
   
 
 ?>
@@ -167,6 +181,7 @@ if(isset($_SESSION['user'])){
 				<div class="col-lg-4">
 					<div class="contact-form-wrap">
           <div class="contact-form-box">
+					<?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
 							<h4> <i class="far fa-user"></i>User Information</h4>
 							<p>Username: <?php echo $row['username']?>  <br>  ID: <?php echo $row['userid']?>  </p>
 						</div>

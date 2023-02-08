@@ -119,7 +119,7 @@ if(isset($_SESSION['user'])){
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>welcome back</p>
+						<p>time to pay</p>
 						<h1><?php echo $row['username']; ?></h1>
 					</div>
 				</div>
@@ -145,7 +145,7 @@ $gtotal = 0;
     $gtotal = $gtotal + $total;
 
 
- $query = "INSERT INTO orders (menuid, foodname, price,  quantity, orderdate, username, userid) VALUES ('$menuid', '$foodname', '$price', '$quantity', '$orderdate', '$username', '$userid')";
+ $query = "INSERT INTO orders (menuid, foodname, price, quantity, orderdate, username, userid) VALUES ('$menuid', '$foodname', '$price', '$quantity', '$orderdate', '$username', '$userid')";
     //          
 //  $query = "INSERT INTO ORDERS (menuid, foodname, price,  quantity, orderdate, username, userid) 
 //               VALUES ('" . $menuid . "','" . $foodname . "','" . $price . "','" . $quantity . "','" . $orderdate . "','" . $username . "','" . $userid . "')";
@@ -167,20 +167,13 @@ $gtotal = 0;
   }
 
         ?>
-        <div class="container">
-          <div class="jumbotron">
-            <h1>Choose your payment option</h1>
-          </div>
-        </div>
-        <br>
-<h1 class="text-center">Grand Total: &#8377;<?php echo "$gtotal"; ?>/-</h1>
-<h5 class="text-center">including all service charges. (no delivery charges applied)</h5>
-<br>
-<h1 class="text-center">
-  <a href="cart.php"><button class="btn btn-warning"><span class="glyphicon glyphicon-circle-arrow-left"></span> Go back to cart</button></a>
-  <a href="onlinepay.php"><button class="btn btn-success"><span class="glyphicon glyphicon-credit-card"></span> Pay Online</button></a>
-  <a href="COD.php"><button class="btn btn-success"><span class="glyphicon glyphicon-"></span> Cash On Delivery</button></a>
-</h1>
+        <div class="container jumbotron text-center">
+          <h2>Grand Total: &#8358; <?php echo number_format("$gtotal", 2); ?></h2>
+					<h5>Including all service charges (no delivery charges applied)</h5>
+					<br>
+					<a href="cart.php" class='boxed-btn'><i class='fas fa-arrow-left'></i> Back to cart</a>
+						<a href="cart.php" class='boxed-btn'><i class='fas fa-credit-card'></i> Make Payment</a>
+				</div>
         
 
 

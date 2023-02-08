@@ -305,7 +305,7 @@ if(empty($_SESSION["cart"]))
   <div class="container">
       <div class="jumbotron">
         <h1>Your Shopping Cart</h1>
-        <p>Oops! We can't smell any food here. Go back and <a href="shop.php">order now.</a></p>
+        <p>Oops! We can't smell any food here. Go back and <a href="shop.php" class="link">Order now.</a></p>
         
       </div>
       

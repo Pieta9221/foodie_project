@@ -138,38 +138,11 @@ if(isset($_SESSION['user'])){
 	</div>
 	<!-- end breadcrumb section -->
 
+	
 	<div class="contact-from-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 mb-5 mb-lg-0">
-					<div class="form-title">
-						<h2>Profile</h2>
-						
-						</div>
-				 	<div id="form_status"></div>
-					<div class="add-form">
-						<form method="POST" >
-						<a href="cart.php">
-								<div  class="abc"> <i class="fas fa-shopping-cart"></i> Cart</div>
-            </a>
-						<a href="wallet.php">
-								<div  class="abc"> <i class="fas fa-wallet"></i> Wallet</div>
-            </a>
-						<a href="userorder.php">
-								<div  class="abc"> <i class="fas fa-shopping-bag"></i> Order History</div>
-            </a>
-						<a href="edituser.php">
-								<div  class="abc"> <i class="far fa-user"></i> Edit Profile</div>
-            </a>
-							<a href="edituserpassword.php">
-              <div class="abc"> <i class="fas fa-unlock"></i> Edit Password</div>
-           </a>
-
-							
-						</form>
-					</div>
-				</div>
-				<div class="col-lg-4">
+                <div class="col-lg-4">
 					<div class="contact-form-wrap">
 					<div class="contact-form-box">
 						<?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
@@ -182,11 +155,37 @@ if(isset($_SESSION['user'])){
 						</div>
 					</div>
 				</div>
+				<div class="col-lg-8 mb-5 mb-lg-0">
+					<div class="form-title">
+						<h2>Profile</h2>
+						
+						</div>
+				 	<div id="form_status"></div>
+					<div class="add-form">
+						<form method="POST" >
+						<a href="cart.php">
+								<div  class="abc"> <i class="fas fa-shopping-cart"></i> &nbsp;Cart</div>
+            </a>
+						<a href="wallet.php">
+								<div  class="abc"> <i class="fas fa-wallet"></i> &nbsp;Wallet</div>
+            </a>
+						<a href="userorder.php">
+								<div  class="abc"> <i class="fas fa-shopping-bag"></i> &nbsp;Order History</div>
+            </a>
+						<a href="edituser.php">
+								<div  class="abc"> <i class="far fa-user"></i> &nbsp;Edit Profile</div>
+            </a>
+							<a href="edituserpassword.php">
+              <div class="abc"> <i class="fas fa-unlock"></i> &nbsp;Edit Password</div>
+           </a>
+													
+						</form>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
-	<!-- end contact form -->
-
 			<!-- footer -->
 			<?php
 include ('footer.php');

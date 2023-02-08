@@ -130,7 +130,7 @@ if(isset($_SESSION['user'])){
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<p>Wallet Balance</p>
-						<h1>&#8358; 20,000.00</h1>
+						<h1>&#8358; <?php echo number_format($row['wallet'], 2) ?></h1>
 					</div>
 				</div>
 			</div>
@@ -145,7 +145,7 @@ if(isset($_SESSION['user'])){
 					<div class="contact-form-wrap">
 					<div class="contact-form-box">
 							<h4> <i class="far fa-user"></i>Hello <?php echo $row['username']?></h4>
-                            <?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
+              <?php echo "<div><img src="."assets/img/".$row['pic']." class='adminimg'/></div>"; ?>
 							<p> User ID: <?php echo $row['userid']?>  </p>
 						</div>
 					</div>
@@ -158,17 +158,13 @@ if(isset($_SESSION['user'])){
 				 	<div id="form_status"></div>
 					<div class="add-form">
 						<form method="POST" >
-						<a href="wallet.php">
-								<div  class="abc"> <i class="fas fa-plus"></i> &nbsp;  Deposit</div>
+						<a href="fundwallet.php">
+								<div  class="abc"> <i class="fas fa-plus"></i> &nbsp; Fund Wallet</div>
             </a>
 						<a href="userorder.php">
-								<div  class="abc"> <i class="fas fa-credit-card"></i> &nbsp; Transaction History</div>
+								<div class="abc"> <i class="fas fa-credit-card"></i> &nbsp; Transaction History</div>
             </a>
-						<a href="edituser.php">
-								<div  class="abc"> <i class="far fa-user"></i> &nbsp; Edit Profile</div>
-            </a>
-
-							
+													
 						</form>
 					</div>
 				</div>
