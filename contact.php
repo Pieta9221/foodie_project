@@ -30,7 +30,7 @@ include ('header.php');
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST">
+						<form method="POST" action="mail.php" >
 							<p>
 								<input type="text" placeholder="Name" name="name" id="name">
 								<input type="email" placeholder="Email" name="email" id="email">

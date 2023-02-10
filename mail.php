@@ -1,7 +1,7 @@
 <?php
 	require 'connection.php';
   $config = new mysqli ($host, $user, $pwd, $database);
-  if ($conn->connect_error){
+  if ($config->connect_error){
     die("Server not found".connect_error);
   }
   else{
